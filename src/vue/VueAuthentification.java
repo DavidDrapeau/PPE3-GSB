@@ -6,13 +6,11 @@
 
 package vue;
 
-
 /**
  *
  * @author btssio
  */
 public class VueAuthentification extends javax.swing.JFrame {
-
 
     /**
      * Creates new form MaquettageApplication
