@@ -19,8 +19,7 @@ public class ControleurAuth {
     public static void main(String args[]) {
        
         ControleurAuth cAuth = new ControleurAuth();
-        cAuth.start();
-        
+        cAuth.start();  
     }
     
     public void start(){
