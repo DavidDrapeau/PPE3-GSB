@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Modele.Dao;
+package Modele.dao;
 
 import Modele.metier.Visiteur;
 import java.sql.PreparedStatement;
@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import modele.dao.Jdbc;
 
 /**
  *
@@ -27,7 +26,7 @@ public class DaoVisiteur {
         PreparedStatement pstmt;
         Jdbc jdbc = Jdbc.getInstance();
         // préparer la requête
-        String requete = "SELECT * FROM ADRESSE WHERE ID= ?";
+        String requete = "SELECT * FROM VISITEUR WHERE ID= ?";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
         pstmt.setString(1, matricule);
         rs = pstmt.executeQuery();
@@ -52,7 +51,7 @@ public class DaoVisiteur {
         PreparedStatement pstmt;
         Jdbc jdbc = Jdbc.getInstance();
         // préparer la requête
-        String requete = "SELECT * FROM ADRESSE";
+        String requete = "SELECT * FROM VISITEUR";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
         rs = pstmt.executeQuery();
         while (rs.next()) {

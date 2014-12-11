@@ -6,18 +6,18 @@
 
 package test.modele.dao;
 
-import Modele.Dao.DaoVisiteur;
-import Modele.metier.Visiteur;
+import Modele.dao.DaoLabo;
+import Modele.dao.Jdbc;
+import Modele.metier.Labo;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import modele.dao.Jdbc;
 
 /**
  *
  * @author btssio
  */
-public class TestDaoVisiteur {
+public class TestDaoLabo {
     
     public static void main(String[] args) {
         
@@ -26,7 +26,7 @@ public class TestDaoVisiteur {
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_SelectUnique("C001");
+            test1_SelectUnique("C15");
             System.out.println("Test1 effectué : sélection unique\n");
             test2_SelectMultiple();
             System.out.println("Test2 effectué : sélection multiple\n");
@@ -53,7 +53,7 @@ public class TestDaoVisiteur {
      * @throws SQLException
      */
     public static void test0_Connexion() throws ClassNotFoundException, SQLException {
-        Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql://", "localhost/", "AGENCEB", "root", "joliverie");
+        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "GSB", "ppegsb", "ppegsb");
         Jdbc.getInstance().connecter();
         Connection cnx = Jdbc.getInstance().getConnexion();
     }
@@ -61,27 +61,27 @@ public class TestDaoVisiteur {
     /**
      * Affiche un visiteur d'après son identifiant
      *
-     * @param matricule : identifiant du visiteur à afficher
+     * @param codeLabo: identifiant du labo à afficher
      * @throws SQLException
      */
-    public static void test1_SelectUnique(String matricule) throws SQLException {
-        Visiteur ceVisiteur = DaoVisiteur.selectOne(matricule);
-        if ( ceVisiteur != null) {
-            System.out.println("Visiteur d'identifiant : " + matricule + " : " + ceVisiteur.toString());
+    public static void test1_SelectUnique(String codeLabo) throws SQLException {
+        Labo ceLabo = DaoLabo.selectOne(codeLabo);
+        if ( ceLabo != null) {
+            System.out.println("Labo d'identifiant : " + codeLabo + " : " + ceLabo.toString());
         } else {
-            System.out.println("Le visiteur d'identifiant : " + matricule + " n'existe pas ");
+            System.out.println("Le labo d'identifiant : " + codeLabo + " n'existe pas ");
         }
         
     }
 
     /**
-     * Affiche tous les visiteurs
+     * Affiche tous les labo
      *
      * @throws SQLException
      */
     public static void test2_SelectMultiple() throws SQLException {
-        List<Visiteur> desVisiteurs = DaoVisiteur.selectAll();
-        System.out.println("Les clients lus : " + desVisiteurs.toString());
+        List<Labo> desLabos = DaoLabo.selectAll();
+        System.out.println("Les labo lus : " + desLabos.toString());
     }
     
 }
