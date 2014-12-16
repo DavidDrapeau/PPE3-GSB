@@ -34,6 +34,11 @@ public class Secteur {
     public void setLibelleSec(String libelleSec) {
         this.libelleSec = libelleSec;
     }
+
+    @Override
+    public String toString() {
+        return "Secteur{" + "codeSec=" + codeSec + ", libelleSec=" + libelleSec + '}';
+    }
     
     
 }

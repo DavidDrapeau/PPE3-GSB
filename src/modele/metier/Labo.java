@@ -44,6 +44,11 @@ public class Labo {
     public void setChefVente(String chefVente) {
         this.chefVente = chefVente;
     }
+
+    @Override
+    public String toString() {
+        return "Labo{" + "codeLabo=" + codeLabo + ", nomLabo=" + nomLabo + ", chefVente=" + chefVente + '}';
+    }
     
     
 }

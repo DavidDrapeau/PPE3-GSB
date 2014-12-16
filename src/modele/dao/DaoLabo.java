@@ -25,7 +25,7 @@ public class DaoLabo {
         PreparedStatement pstmt;
         Jdbc jdbc = Jdbc.getInstance();
         // préparer la requête
-        String requete = "SELECT * FROM LABO WHERE ID= ?";
+        String requete = "SELECT * FROM LABO WHERE LAB_CODE= ?";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
         pstmt.setString(1, codeLabo);
         rs = pstmt.executeQuery();

@@ -25,7 +25,7 @@ public class DaoSecteur {
         PreparedStatement pstmt;
         Jdbc jdbc = Jdbc.getInstance();
         // préparer la requête
-        String requete = "SELECT * FROM SECTEUR WHERE ID= ?";
+        String requete = "SELECT * FROM SECTEUR WHERE SEC_CODE= ?";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
         pstmt.setString(1, codeSec);
         rs = pstmt.executeQuery();
