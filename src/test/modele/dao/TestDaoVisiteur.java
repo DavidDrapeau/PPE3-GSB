@@ -6,11 +6,11 @@
 
 package test.modele.dao;
 
-import Modele.dao.DaoVisiteur;
-import Modele.metier.Visiteur;
+import modele.dao.DaoVisiteur;
+import modele.metier.Visiteur;
 import java.sql.*;
 import java.util.List;
-import Modele.dao.Jdbc;
+import modele.dao.Jdbc;
 
 /**
  *
@@ -25,7 +25,7 @@ public class TestDaoVisiteur {
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_SelectUnique("C15");
+            test1_SelectUnique("a17");
             System.out.println("Test1 effectué : sélection unique\n");
             test2_SelectMultiple();
             System.out.println("Test2 effectué : sélection multiple\n");
@@ -52,7 +52,7 @@ public class TestDaoVisiteur {
      * @throws SQLException
      */
     public static void test0_Connexion() throws ClassNotFoundException, SQLException {
-        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "PPEGSB", "ppegsb", "ppegsb");
+        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
         Jdbc.getInstance().connecter();
         Connection cnx = Jdbc.getInstance().getConnexion();
     }

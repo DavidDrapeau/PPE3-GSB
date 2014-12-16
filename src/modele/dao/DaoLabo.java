@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Modele.dao;
+package modele.dao;
 
 
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import Modele.metier.Labo;
+import modele.metier.Labo;
 
 /**
  *

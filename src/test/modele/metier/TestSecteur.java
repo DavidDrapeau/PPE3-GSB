@@ -6,7 +6,7 @@
 
 package test.modele.metier;
 
-import Modele.metier.Secteur;
+import modele.metier.Secteur;
 
 /**
  *

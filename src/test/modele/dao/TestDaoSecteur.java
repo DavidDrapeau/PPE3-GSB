@@ -6,9 +6,9 @@
 
 package test.modele.dao;
 
-import Modele.dao.DaoSecteur;
-import Modele.dao.Jdbc;
-import Modele.metier.Secteur;
+import modele.dao.DaoSecteur;
+import modele.dao.Jdbc;
+import modele.metier.Secteur;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;

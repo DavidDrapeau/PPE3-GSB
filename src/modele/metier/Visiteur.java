@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Modele.metier;
+package modele.metier;
 
 import java.util.Date;
 
@@ -105,6 +105,11 @@ public class Visiteur {
 
     public void setCodeLabo(String codeLabo) {
         this.codeLabo = codeLabo;
+    }
+
+    @Override
+    public String toString() {
+        return "Visiteur{" + "matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", dateEmbauche=" + dateEmbauche + ", codeSecteur=" + codeSecteur + ", codeLabo=" + codeLabo + '}';
     }
   
     

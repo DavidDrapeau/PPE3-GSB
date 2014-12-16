@@ -6,17 +6,25 @@
 
 package vue;
 
+import java.util.*;
+import controleur.ControleurAuth;
+
+
+
+
 /**
  *
  * @author btssio
  */
 public class VueAuthentification extends javax.swing.JFrame {
 
+
     /**
      * Creates new form MaquettageApplication
      */
-    public VueAuthentification() {
+    public VueAuthentification(ControleurAuth cAuth) {
         initComponents();
+        this.cAuth = cAuth;
     }
 
     /**
@@ -28,25 +36,30 @@ public class VueAuthentification extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jAuthLabel1 = new javax.swing.JLabel();
+        jAuthLabel2 = new javax.swing.JLabel();
+        jAuthLabel3 = new javax.swing.JLabel();
+        jAuthLogin = new javax.swing.JTextField();
+        jAuthPass = new javax.swing.JTextField();
+        jAuthButtonOK = new javax.swing.JButton();
+        jAuthButtonQuit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Identifiez vous :");
+        jAuthLabel1.setText("Identifiez vous :");
 
-        jLabel2.setText("Identifiant:");
+        jAuthLabel2.setText("Identifiant:");
 
-        jLabel3.setText("Mot de passe:");
+        jAuthLabel3.setText("Mot de passe:");
 
-        jButton1.setText("OK");
+        jAuthButtonOK.setText("OK");
+        jAuthButtonOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAuthButtonOKActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Quitter");
+        jAuthButtonQuit.setText("Quitter");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,85 +68,74 @@ public class VueAuthentification extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
+                    .addComponent(jAuthButtonQuit)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jAuthLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
+                                .addComponent(jAuthLabel3)
+                                .addComponent(jAuthLabel2))
                             .addGap(44, 44, 44)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                                .addComponent(jTextField2))
+                                .addComponent(jAuthLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                .addComponent(jAuthPass))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton1))))
+                            .addComponent(jAuthButtonOK))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(jLabel1)
+                .addComponent(jAuthLabel1)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jAuthLabel2)
+                    .addComponent(jAuthLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jAuthLabel3)
+                    .addComponent(jAuthPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jAuthButtonOK))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jAuthButtonQuit)
                 .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VueAuthentification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VueAuthentification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VueAuthentification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VueAuthentification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void jAuthButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAuthButtonOKActionPerformed
+   
+            String login = jAuthLogin.getText();
+            String pass = jAuthPass.getText();
+        
+        boolean test = cAuth.connexion(login, pass);
+        if(test==true){
+            this.setVisible(false);
+          
         }
-        //</editor-fold>
+        
+        
+    }//GEN-LAST:event_jAuthButtonOKActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VueAuthentification().setVisible(true);
-            }
-        });
+
+    
+    public void hideW(){
+        this.setVisible(false);
+     
     }
+    
+    
+    private ControleurAuth cAuth;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton jAuthButtonOK;
+    private javax.swing.JButton jAuthButtonQuit;
+    private javax.swing.JLabel jAuthLabel1;
+    private javax.swing.JLabel jAuthLabel2;
+    private javax.swing.JLabel jAuthLabel3;
+    private javax.swing.JTextField jAuthLogin;
+    private javax.swing.JTextField jAuthPass;
     // End of variables declaration//GEN-END:variables
 }

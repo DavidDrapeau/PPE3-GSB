@@ -1,4 +1,4 @@
-package Modele.dao;
+package modele.dao;
 
 import java.sql.*;
 
@@ -45,6 +45,7 @@ public class Jdbc {
 
     public static Jdbc creer(String pilote, String protocole, String serveur, String base, String login, String mdp) {
         if (singleton == null) {
+            System.out.println(pilote+protocole+serveur+base+login+mdp);
             singleton = new Jdbc(pilote, protocole, serveur, base, login, mdp);
         }
         return singleton;

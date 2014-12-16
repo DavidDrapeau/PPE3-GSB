@@ -15,13 +15,13 @@ import vue.VueAccueil;
 public class ControleurAccueil {
     
     public ControleurAccueil(){
-        
-        VueAccueil vAcc = new VueAccueil();
+        System.out.println("ok");
+        VueAccueil vAcc = new VueAccueil(this);
         vAcc.setVisible(true);
         ////
     }
     
-    public void welcome(){
+    public void goVisit(){
 
         ControleurMedicaments cMed = new ControleurMedicaments(); //
     }

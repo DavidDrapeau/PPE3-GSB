@@ -5,23 +5,24 @@
  */
 
 package controleur;
-
-import vue.*;
-
+import vue.VueVisiteurs;
+import modele.dao.Jdbc;
 /**
  *
  * @author btssio
  */
-public class main {
+public class ControleurVisiteurs {
     
-        public static void main(String args[]) {
-        ControleurAuth cAuth = new ControleurAuth();
-        cAuth.start();
-    }
-             
-       
-      
+    
+       public ControleurVisiteurs(){
+    
+        VueVisiteurs vVis = new VueVisiteurs();
+        vVis.setVisible(true);
+        
         
     
-
+    }
+       
+       
 }
+

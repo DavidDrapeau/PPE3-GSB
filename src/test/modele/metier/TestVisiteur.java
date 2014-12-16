@@ -6,7 +6,7 @@
 
 package test.modele.metier;
 
-import Modele.metier.Visiteur;
+import modele.metier.Visiteur;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;

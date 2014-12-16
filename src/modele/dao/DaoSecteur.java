@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package Modele.dao;
+package modele.dao;
 
-import Modele.metier.Secteur;
+import modele.metier.Secteur;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
