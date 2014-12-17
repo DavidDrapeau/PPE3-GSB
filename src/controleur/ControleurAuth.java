@@ -5,57 +5,62 @@
  */
 
 package controleur;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.*;
+import vue.VueAbstraite;
 import vue.VueAccueil;
 import vue.VueAuthentification;
 /**
  *
  * @author btssio
  */
-public class ControleurAuth {
+public class ControleurAuth extends CtrlAbstrait{   
+    private VueAuthentification vue = new VueAuthentification(this);
     
     
 
-    
-    public void start(){
-        vAuth = new VueAuthentification(this);
-        vAuth.setVisible(true);
-        antibug = false;
-    }
-    
-    public void welcome(){
+    public ControleurAuth(CtrlPrincipal ctrlPrincipal ){
+        super(ctrlPrincipal);
+        
+         //Ecouteurs Bouton ok
+        vue.jAuthButtonOK.addActionListener(new ActionListener() {
 
-            ControleurAccueil cAcc = new ControleurAccueil();
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Coucou");
+               valider();
+            }
+        });
         
     }
-    //
+    
+    public void valider(){
+        String login;
+        String mdp;
+        
+        login = vue.jAuthLogin.getText();
+        mdp = vue.jAuthPass.getText();
+        //Faire la verif login
+        
+        CtrlPrincipal CtrlP = new CtrlPrincipal();
+        CtrlP.action(EnumAction.AFFICHER_MENU);
+        vue.setVisible(false);
+        
+    }
 
-    public boolean connexion(String login, String pass){
-        
-       // String log = login;
-      //  String p = pass;
-        System.out.println("ok login =0" + login + "0");
-        
-        //code provisoir de test
-        //sera replace par requête SQL login/pass)
-        if("admin".equals(login)){
-          
-          System.out.println("true");
-          welcome();
-          return true;
-        }else{
-             System.out.println("false");
-            return false;
-        }
-        
+    public VueAuthentification getVue() {
+        return vue;
+    }
+
+    public void setVue(VueAuthentification vue) {
+        this.vue = vue;
     }
     
-    private boolean antibug;
     
-    private VueAuthentification vAuth;
-    private VueAccueil vAcc;
-    
+
     
     
 }

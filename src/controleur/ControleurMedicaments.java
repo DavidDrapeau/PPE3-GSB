@@ -13,14 +13,11 @@ import java.util.*;
  *
  * @author btssio
  */
-public class ControleurMedicaments {
+public class ControleurMedicaments extends CtrlAbstrait {
     
-    public ControleurMedicaments(){
-    
-        VueMedicaments vMed = new VueMedicaments();
-        vMed.setVisible(true);
-        //  vMed.setVisible(true);
-    
+    public ControleurMedicaments(CtrlPrincipal ctrlPrincipal ){
+        super(ctrlPrincipal);
+        
     }
        
        

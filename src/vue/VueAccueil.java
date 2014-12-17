@@ -6,19 +6,22 @@
 
 package vue;
 import controleur.ControleurAccueil;
+import controleur.CtrlAbstrait;
 /**
  *
  * @author btssio
  */
-public class VueAccueil extends javax.swing.JFrame {
+public class VueAccueil extends VueAbstraite {
 
     /**
      * Creates new form VueAccueil
      */
-    public VueAccueil(ControleurAccueil cAcc) {
+    public VueAccueil(CtrlAbstrait ctrlA) {
+        super(ctrlA);
         initComponents();
-        this.cAcc = cAcc;
-
+        
+        
+        
     }
 
     /**
@@ -31,35 +34,25 @@ public class VueAccueil extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
         jButtonMed = new javax.swing.JButton();
         jButtonVisi = new javax.swing.JButton();
+        jButtonCpt = new javax.swing.JButton();
+        jButtonPrati = new javax.swing.JButton();
+        jButtonQuitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Gestion des comptes rendus");
 
-        jCheckBox1.setText("Comptes-Rendus");
-
-        jCheckBox3.setText("Praticiens");
-
-        jCheckBox5.setText("Quitter");
-
         jButtonMed.setText("Médicaments");
-        jButtonMed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMedActionPerformed(evt);
-            }
-        });
 
         jButtonVisi.setText("Visiteurs");
-        jButtonVisi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVisiActionPerformed(evt);
-            }
-        });
+
+        jButtonCpt.setText("Compte-rendu");
+
+        jButtonPrati.setText("Praticiens");
+
+        jButtonQuitter.setText("Quitter");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,12 +66,17 @@ public class VueAccueil extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox5)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jButtonVisi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonMed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jButtonMed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonCpt)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonPrati)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jButtonQuitter)))))))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,41 +84,29 @@ public class VueAccueil extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonVisi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonMed)
+                .addComponent(jButtonCpt)
                 .addGap(12, 12, 12)
-                .addComponent(jCheckBox5)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(jButtonVisi)
+                .addGap(12, 12, 12)
+                .addComponent(jButtonPrati)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonMed)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonQuitter)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMedActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_jButtonMedActionPerformed
-
-    private void jButtonVisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisiActionPerformed
-        
-        cAcc.goVisit();
-        
-    }//GEN-LAST:event_jButtonVisiActionPerformed
-
-    private ControleurAccueil cAcc;
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonMed;
-    private javax.swing.JButton jButtonVisi;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox5;
+    public javax.swing.JButton jButtonCpt;
+    public javax.swing.JButton jButtonMed;
+    public javax.swing.JButton jButtonPrati;
+    public javax.swing.JButton jButtonQuitter;
+    public javax.swing.JButton jButtonVisi;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

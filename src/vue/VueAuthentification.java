@@ -8,6 +8,7 @@ package vue;
 
 import java.util.*;
 import controleur.ControleurAuth;
+import controleur.CtrlAbstrait;
 
 
 
@@ -16,15 +17,18 @@ import controleur.ControleurAuth;
  *
  * @author btssio
  */
-public class VueAuthentification extends javax.swing.JFrame {
+public class VueAuthentification extends VueAbstraite {
 
 
     /**
      * Creates new form MaquettageApplication
      */
-    public VueAuthentification(ControleurAuth cAuth) {
+    public VueAuthentification(CtrlAbstrait ctrlA) {
+        super(ctrlA);
         initComponents();
-        this.cAuth = cAuth;
+        
+        
+        
     }
 
     /**
@@ -53,11 +57,6 @@ public class VueAuthentification extends javax.swing.JFrame {
         jAuthLabel3.setText("Mot de passe:");
 
         jAuthButtonOK.setText("OK");
-        jAuthButtonOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAuthButtonOKActionPerformed(evt);
-            }
-        });
 
         jAuthButtonQuit.setText("Quitter");
 
@@ -105,37 +104,20 @@ public class VueAuthentification extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jAuthButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAuthButtonOKActionPerformed
-   
-            String login = jAuthLogin.getText();
-            String pass = jAuthPass.getText();
-        
-        boolean test = cAuth.connexion(login, pass);
-        if(test==true){
-            this.setVisible(false);
-          
-        }
-        
-        
-    }//GEN-LAST:event_jAuthButtonOKActionPerformed
-
 
     
-    public void hideW(){
-        this.setVisible(false);
-     
-    }
     
     
-    private ControleurAuth cAuth;
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jAuthButtonOK;
-    private javax.swing.JButton jAuthButtonQuit;
+    public javax.swing.JButton jAuthButtonOK;
+    public javax.swing.JButton jAuthButtonQuit;
     private javax.swing.JLabel jAuthLabel1;
     private javax.swing.JLabel jAuthLabel2;
     private javax.swing.JLabel jAuthLabel3;
-    private javax.swing.JTextField jAuthLogin;
-    private javax.swing.JTextField jAuthPass;
+    public javax.swing.JTextField jAuthLogin;
+    public javax.swing.JTextField jAuthPass;
     // End of variables declaration//GEN-END:variables
 }
