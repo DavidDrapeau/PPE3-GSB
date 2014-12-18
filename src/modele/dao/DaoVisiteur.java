@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import modele.metier.Labo;
+import modele.metier.Secteur;
 import modele.metier.Visiteur;
 
 /**
@@ -124,9 +126,9 @@ public class DaoVisiteur {
                 String cp = rs.getString("VIS_CP");
                 String ville = rs.getString("VIS_VILLE");
                 Date dateEmbauche = rs.getDate("VIS_DATEEMBAUCHE");
-                String codeSecteur = rs.getString("SEC_CODE");
-                String codeLabo = rs.getString("LAB_CODE");
-                unVisiteur = new Visiteur(matricule, nom, prenom, adresse, cp, ville, dateEmbauche, codeSecteur, codeLabo);
+                Secteur secteur= DaoSecteur.selectOne(rs.getString("SEC_CODE"));
+                Labo labo = DaoLabo.selectOne(rs.getString("LAB_CODE"));
+                unVisiteur = new Visiteur(matricule, nom, prenom, adresse, cp, ville, dateEmbauche, secteur,labo);
                     lesVisiteurs.add(unVisiteur);
                    
             }

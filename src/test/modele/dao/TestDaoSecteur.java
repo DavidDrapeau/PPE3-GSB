@@ -12,6 +12,9 @@ import modele.metier.Secteur;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modele.dao.DaoException;
 
 /**
  *
@@ -80,8 +83,13 @@ public class TestDaoSecteur {
      * @throws SQLException
      */
     public static void test2_SelectMultiple() throws SQLException {
-        List<Secteur> desSecteurs = DaoSecteur.selectAll();
-        System.out.println("Les secteurs lus : " + desSecteurs.toString());
+        List<Secteur> desSecteurs;
+        try {
+            desSecteurs = DaoSecteur.selectAll();
+            System.out.println("Les secteurs lus : " + desSecteurs.toString());            
+        } catch (DaoException ex) {
+            Logger.getLogger(TestDaoSecteur.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

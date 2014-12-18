@@ -45,10 +45,12 @@ public class Labo {
         this.chefVente = chefVente;
     }
 
-    @Override
-    public String toString() {
+
+    public String toString2() {
         return "Labo{" + "codeLabo=" + codeLabo + ", nomLabo=" + nomLabo + ", chefVente=" + chefVente + '}';
     }
     
-    
+    public String toString(){
+        return (nomLabo);
+    }
 }

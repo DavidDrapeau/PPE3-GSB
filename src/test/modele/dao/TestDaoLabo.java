@@ -12,6 +12,9 @@ import modele.metier.Labo;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modele.dao.DaoException;
 
 /**
  *
@@ -19,7 +22,7 @@ import java.util.List;
  */
 public class TestDaoLabo {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DaoException {
         
         java.sql.Connection cnx = null;
         
@@ -80,8 +83,13 @@ public class TestDaoLabo {
      * @throws SQLException
      */
     public static void test2_SelectMultiple() throws SQLException {
-        List<Labo> desLabos = DaoLabo.selectAll();
-        System.out.println("Les labo lus : " + desLabos.toString());
+        List<Labo> desLabos;
+        try {
+            desLabos = DaoLabo.selectAll();
+            System.out.println("Les labo lus : " + desLabos.toString());
+        } catch (DaoException ex) {
+            Logger.getLogger(TestDaoLabo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

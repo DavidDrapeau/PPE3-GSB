@@ -35,10 +35,12 @@ public class Secteur {
         this.libelleSec = libelleSec;
     }
 
-    @Override
-    public String toString() {
+
+    public String toString2() {
         return "Secteur{" + "codeSec=" + codeSec + ", libelleSec=" + libelleSec + '}';
     }
     
-    
+    public String toString(){
+        return(libelleSec);
+    }
 }

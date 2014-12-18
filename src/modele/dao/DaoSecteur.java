@@ -55,7 +55,7 @@ public class DaoSecteur {
                 lesSecteurs.add(unSecteur);
             }
         } catch (SQLException ex) {
-            throw new DaoException("DaoLabo - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
+            throw new DaoException("DaoSecteur - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
         return lesSecteurs;
     }

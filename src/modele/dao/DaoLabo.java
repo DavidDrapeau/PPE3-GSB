@@ -56,7 +56,7 @@ public class DaoLabo {
                 lesLabos.add(unLabo);
             }
         } catch (SQLException ex) {
-            throw new DaoException("DaoVisiteur - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
+            throw new DaoException("DaoLabo - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
         return lesLabos;
     }
