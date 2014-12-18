@@ -10,6 +10,9 @@ import modele.dao.DaoVisiteur;
 import modele.metier.Visiteur;
 import java.sql.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modele.dao.DaoException;
 import modele.dao.Jdbc;
 
 /**
@@ -79,8 +82,14 @@ public class TestDaoVisiteur {
      * @throws SQLException
      */
     public static void test2_SelectMultiple() throws SQLException {
-        List<Visiteur> desVisiteurs = DaoVisiteur.selectAll();
-        System.out.println("Les clients lus : " + desVisiteurs.toString());
+        List<Visiteur> desVisiteurs;
+        try {
+            desVisiteurs = DaoVisiteur.selectAll();
+            System.out.println("Les clients lus : " + desVisiteurs.toString());
+        } catch (DaoException ex) {
+            Logger.getLogger(TestDaoVisiteur.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }

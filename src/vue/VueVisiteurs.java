@@ -80,12 +80,6 @@ public class VueVisiteurs extends VueAbstraite {
 
         jLabelLabo.setText("LABO");
 
-        jComboBoxSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSearchActionPerformed(evt);
-            }
-        });
-
         jButtonOk.setText("OK");
 
         jButtonPrecedent.setText("Précédent");
@@ -201,30 +195,17 @@ public class VueVisiteurs extends VueAbstraite {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchActionPerformed
-       // getControleur().afficherListeVisiteurs(null);
-    }//GEN-LAST:event_jComboBoxSearchActionPerformed
-
-   
-    
-    public JComboBox getjComboBoxSearch() {
-        return jComboBoxSearch;
-    }
-
-    public void setjComboBoxSearch(JComboBox jComboBoxSearch) {
-        this.jComboBoxSearch = jComboBoxSearch;
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonFermer;
-    private javax.swing.JButton jButtonOk;
-    private javax.swing.JButton jButtonPrecedent;
-    private javax.swing.JButton jButtonSuivant;
+    public javax.swing.JButton jButtonFermer;
+    public javax.swing.JButton jButtonOk;
+    public javax.swing.JButton jButtonPrecedent;
+    public javax.swing.JButton jButtonSuivant;
     private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBoxLabo;
-    private javax.swing.JComboBox jComboBoxSearch;
-    private javax.swing.JComboBox jComboBoxSecteur;
+    public javax.swing.JComboBox jComboBoxLabo;
+    public javax.swing.JComboBox jComboBoxSearch;
+    public javax.swing.JComboBox jComboBoxSecteur;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelAdresse;
@@ -235,11 +216,11 @@ public class VueVisiteurs extends VueAbstraite {
     private javax.swing.JLabel jLabelVille;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextFieldAdresse;
-    private javax.swing.JTextField jTextFieldNom;
-    private javax.swing.JTextField jTextFieldPrenom;
-    private javax.swing.JTextField jTextFieldVille;
-    private javax.swing.JTextField jTextFieldVilleNumCp;
+    public javax.swing.JTextField jTextFieldAdresse;
+    public javax.swing.JTextField jTextFieldNom;
+    public javax.swing.JTextField jTextFieldPrenom;
+    public javax.swing.JTextField jTextFieldVille;
+    public javax.swing.JTextField jTextFieldVilleNumCp;
     // End of variables declaration//GEN-END:variables
 
 

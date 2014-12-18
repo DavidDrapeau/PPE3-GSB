@@ -43,6 +43,9 @@ public class CtrlPrincipal {
             case VISITEUR_AFFICHER: // activation de vueVisiteurs depuis vueMenu
                 afficherVisiteurs();
                 break;
+            case VISITEUR_RETOUR: // retour à vueMenu depuis la vueVisiteur
+                visiteurQuitter();
+                break;
             case MENU_FICHIER_QUITTER: // fin de l'application depuis vueMenu
                 menuFichierQuitter();
                 break;
@@ -56,6 +59,8 @@ public class CtrlPrincipal {
      */
     private void menuFichierQuitter() {
         System.exit(0);
+        vueA.setVisible(false);
+        vueC.setVisible(false);
     }
     
     
@@ -95,4 +100,16 @@ public class CtrlPrincipal {
         ControleurVisiteurs.getVue().setVisible(true);
     }
     
+    /**
+     * Transition vueVisiteur / vueMenu
+     */
+    private void visiteurQuitter() {
+        if (ControleurAccueil == null) {
+            ControleurAccueil = new ControleurAccueil(this);
+        }
+        ControleurVisiteurs.getVue().setVisible(false);
+        ControleurAccueil.getVue().setEnabled(true);
+        ControleurAccueil.getVue().setVisible(true);
+    }
+
 }

@@ -21,22 +21,15 @@ public class main {
         CtrlPrincipal ctrlPrincipal; // référence vers le contrôleur principal
         
         java.sql.Connection cnx = null;
+        
         try{
-        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
-        Jdbc.getInstance().connecter();
-        cnx = Jdbc.getInstance().getConnexion();
+            Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
+            Jdbc.getInstance().connecter();
+            cnx = Jdbc.getInstance().getConnexion();
         } catch (ClassNotFoundException e) {
             System.err.println("Erreur de pilote JDBC : " + e);
         } catch (SQLException e) {
             System.err.println("Erreur SQL : " + e);
-        } finally {
-            try {
-                if (cnx != null) {
-                    cnx.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Erreur de fermeture de la connexion JDBC : " + e);
-            }
         }
 
         // Pour lancer l'application, instancier le contrôleur principal

@@ -37,21 +37,25 @@ public class DaoSecteur {
     }
      
     //Récupérer tous les secteurs
-    public static List<Secteur> selectAll() throws SQLException {
+    public static List<Secteur> selectAll() throws DaoException {
         List<Secteur> lesSecteurs = new ArrayList<Secteur>();
         Secteur unSecteur;
         ResultSet rs;
-        PreparedStatement pstmt;
-        Jdbc jdbc = Jdbc.getInstance();
-        // préparer la requête
-        String requete = "SELECT * FROM SECTEUR";
-        pstmt = jdbc.getConnexion().prepareStatement(requete);
-        rs = pstmt.executeQuery();
-        while (rs.next()) {
-            String codeSec = rs.getString("SEC_CODE");
-            String libelleSec = rs.getString("SEC_LIBELLE");
-            unSecteur = new Secteur(codeSec, libelleSec);
-            lesSecteurs.add(unSecteur);
+        try {
+            PreparedStatement pstmt;
+            Jdbc jdbc = Jdbc.getInstance();
+            // préparer la requête
+            String requete = "SELECT * FROM SECTEUR";
+            pstmt = jdbc.getConnexion().prepareStatement(requete);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String codeSec = rs.getString("SEC_CODE");
+                String libelleSec = rs.getString("SEC_LIBELLE");
+                unSecteur = new Secteur(codeSec, libelleSec);
+                lesSecteurs.add(unSecteur);
+            }
+        } catch (SQLException ex) {
+            throw new DaoException("DaoLabo - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
         return lesSecteurs;
     }

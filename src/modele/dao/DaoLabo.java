@@ -37,22 +37,26 @@ public class DaoLabo {
         return unLabo;
     }
 
-    public static List<Labo> selectAll() throws SQLException {
+    public static List<Labo> selectAll() throws DaoException {
         List<Labo> lesLabos = new ArrayList<Labo>();
         Labo unLabo;
         ResultSet rs;
-        PreparedStatement pstmt;
-        Jdbc jdbc = Jdbc.getInstance();
-        // préparer la requête
-        String requete = "SELECT * FROM LABO";
-        pstmt = jdbc.getConnexion().prepareStatement(requete);
-        rs = pstmt.executeQuery();
-        while (rs.next()) {
-            String codeLabo = rs.getString("LAB_CODE");
-            String nomLabo = rs.getString("LAB_NOM");
-            String chefVente = rs.getString("LAB_CHEFVENTE");
-            unLabo = new Labo(codeLabo, nomLabo, chefVente);
-            lesLabos.add(unLabo);
+        try {
+            PreparedStatement pstmt;
+            Jdbc jdbc = Jdbc.getInstance();
+            // préparer la requête
+            String requete = "SELECT * FROM LABO";
+            pstmt = jdbc.getConnexion().prepareStatement(requete);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String codeLabo = rs.getString("LAB_CODE");
+                String nomLabo = rs.getString("LAB_NOM");
+                String chefVente = rs.getString("LAB_CHEFVENTE");
+                unLabo = new Labo(codeLabo, nomLabo, chefVente);
+                lesLabos.add(unLabo);
+            }
+        } catch (SQLException ex) {
+            throw new DaoException("DaoVisiteur - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
         return lesLabos;
     }

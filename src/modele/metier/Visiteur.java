@@ -111,6 +111,10 @@ public class Visiteur {
     public String toString() {
         return "Visiteur{" + "matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", dateEmbauche=" + dateEmbauche + ", codeSecteur=" + codeSecteur + ", codeLabo=" + codeLabo + '}';
     }
-  
+    
+    //Méthodde toString pour l'affichage du nom et du prénom du visiteur dans la comboBox de recherche
+    public String toString2() {
+        return nom + " " + prenom;
+    }
     
 }
