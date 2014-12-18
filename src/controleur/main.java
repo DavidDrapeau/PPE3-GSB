@@ -23,7 +23,7 @@ public class main {
         java.sql.Connection cnx = null;
         
         try{
-            Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
+            Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ora_2slamppe_eq4", "ora_2sla");
             Jdbc.getInstance().connecter();
             cnx = Jdbc.getInstance().getConnexion();
         } catch (ClassNotFoundException e) {
