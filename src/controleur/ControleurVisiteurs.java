@@ -53,7 +53,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
                 }
             }
         });
-        //récupèe la liste des labo
+        //récupère la liste des labo
         try {
             lesLabos = DaoLabo.selectAll();
             afficherListeLabo(lesLabos);
@@ -79,6 +79,19 @@ public class ControleurVisiteurs extends CtrlAbstrait {
                     Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        });
+        
+        //Ecouteur bouton précédent
+        vue.jButtonPrecedent.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                visiteurPrecedent();
+            }           
+        });
+        //Ecouteur bouton suivant
+        vue.jButtonSuivant.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                visiteurSuivant();
+            }           
         });
     }
     
@@ -108,7 +121,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
     
     /**
      *
-     * Charger la liste des labo relatif à la base de donnée
+     * Charger la liste des labo relatifs à la base de donnée
      *
      * @throws DaoException
      * @throws Exception
@@ -124,7 +137,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
     /**
      *
      *
-     * Charge la liste des Secteur relatif à la base de donnée
+     * Charge la liste des Secteurs relatifs à la base de donnée
      *
      * @throws DaoException
      */
@@ -157,7 +170,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         System.out.println(secteur);
         if(secteur != null)
         {
-             getVue().jComboBoxSecteur.setSelectedItem(secteur);
+             getVue().jComboBoxSecteur.setSelectedItem(secteur.getLibelleSec());
         } else 
         {
             getVue().jComboBoxSecteur.setSelectedItem("aucun");
@@ -167,12 +180,35 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         System.out.println(labo);
         if(labo != null)
         {
-            getVue().jComboBoxLabo.setSelectedItem(labo);
+            getVue().jComboBoxLabo.setSelectedItem(labo.getNomLabo());
         } else 
         {
              getVue().jComboBoxLabo.setSelectedItem("aucun");
         } 
         
+    }
+    
+    /**Bouton suivant. affiche le visiteur suivant
+    *
+    */
+    public void visiteurSuivant(){
+        int index = getVue().jComboBoxSearch.getSelectedIndex() + 1;
+        if (index == getVue().jComboBoxSearch.getItemCount()) {
+            index = 0;
+        }
+        getVue().jComboBoxSearch.setSelectedIndex(index);
+        visiteurSelectionne();
+    }
+    /**
+    Bouton précédent, affiche le visiteur précédent
+    */
+    public void visiteurPrecedent(){
+        int index = getVue().jComboBoxSearch.getSelectedIndex() - 1;
+        if (index == -1) {
+            index = getVue().jComboBoxSearch.getItemCount() - 1;
+        }
+        getVue().jComboBoxSearch.setSelectedIndex(index);
+        visiteurSelectionne();
     }
     
     

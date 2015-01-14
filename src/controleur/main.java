@@ -24,7 +24,7 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
-        String ficPropertiesJdbc = "gsbProperties.properties"; // nom du fichier de properties SERVEUR DISTANT
+        String ficPropertiesJdbc = "gsbProperties_local.properties"; // nom du fichier de properties SERVEUR DISTANT
 // String ficPropertiesJdbc ="gsbJdbcLocal.properties" ; //nom du fichier de properties SERVEUR LOCAL
         Properties propertiesJdbc; // objet de propriétés (paramètres de l'appplication) pour Jdbc
         FileInputStream input; // flux de lecture des properties
