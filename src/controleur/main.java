@@ -1,41 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controleur;
 
-import java.sql.Connection;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
-import modele.dao.Jdbc;
-import vue.*;
+import java.util.Properties;
+import javax.swing.JOptionPane;
+import modele.dao.* ;
+
 
 /**
- *
- * @author btssio
+ * GSB
+ * 
+* @version v2 11 décembre 2014
+ * @author Groupe2 Objectif : - exemple de dynamique Vue/Controleur avec
+ * controleur principal - exemple de pattern Dao - exemple de singleton de
+ * connexion à un SGBD - exemple de paramétrage utilisant un fichier de
+ * "properties"
  */
 public class main {
 
-    public static void main(String args[]) {
-
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
+        String ficPropertiesJdbc = "gsbProperties.properties"; // nom du fichier de properties SERVEUR DISTANT
+// String ficPropertiesJdbc ="gsbJdbcLocal.properties" ; //nom du fichier de properties SERVEUR LOCAL
+        Properties propertiesJdbc; // objet de propriétés (paramètres de l'appplication) pour Jdbc
+        FileInputStream input; // flux de lecture des properties
         CtrlPrincipal ctrlPrincipal; // référence vers le contrôleur principal
-        
-        java.sql.Connection cnx = null;
-        
-        try{
-            Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ora_2slamppe_eq4", "ora_2sla");
-            Jdbc.getInstance().connecter();
-            cnx = Jdbc.getInstance().getConnexion();
-        } catch (ClassNotFoundException e) {
-            System.err.println("Erreur de pilote JDBC : " + e);
-        } catch (SQLException e) {
-            System.err.println("Erreur SQL : " + e);
+// si au moins un paramètre a été passé sur la ligne de commandes
+// le premier est le nom du fichier contenant les propriétés de connexion JDBC
+        if (args.length > 0) {
+            ficPropertiesJdbc = args[0];
         }
-
-        // Pour lancer l'application, instancier le contrôleur principal
+        FabriqueJdbc.creer(ficPropertiesJdbc);
+        Jdbc.getInstance().connecter();
+// Pour lancer l'application, instancier le contrôleur principal
         ctrlPrincipal = new CtrlPrincipal();
         ctrlPrincipal.action();
-
     }
-
 }
