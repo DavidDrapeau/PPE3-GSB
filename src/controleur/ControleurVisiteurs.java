@@ -53,6 +53,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
                 }
             }
         });
+        
         //récupère la liste des labo
         try {
             lesLabos = DaoLabo.selectAll();
@@ -103,7 +104,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
      * @param lesVisiteurs : Liste de visiteurs
      */
     public void afficherListeVisiteurs(List<Visiteur> lesVisiteurs) {
-        getVue().jComboBoxSearch.removeAll();
+        getVue().jComboBoxSearch.removeAllItems();
         for (Visiteur visiteur : lesVisiteurs) {           
             getVue().jComboBoxSearch.addItem(visiteur);
         }
@@ -127,7 +128,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
      * @throws Exception
      */
     private void afficherListeLabo(List<Labo> lesLabos){
-        getVue().jComboBoxLabo.removeAll();
+        getVue().jComboBoxLabo.removeAllItems();
         vue.jComboBoxLabo.addItem("aucun");
         for (Labo labo : lesLabos) {
             getVue().jComboBoxLabo.addItem(labo);
@@ -143,7 +144,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
      */
 
     private void afficherListeSecteur(List<Secteur> lesSecteurs) throws DaoException {
-        getVue().jComboBoxSecteur.removeAll();
+        getVue().jComboBoxSecteur.removeAllItems();
         vue.jComboBoxSecteur.addItem("aucun");
         for (Secteur secteur : lesSecteurs) {
             getVue().jComboBoxSecteur.addItem(secteur);
@@ -152,7 +153,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
     
     
         /**
-     * Affiche les détails du visiteur courant selectionnée dans la comboBox recherche
+     * Affiche les détails du visiteur courant selectionné dans la comboBox recherche
      *
      */
     public void visiteurSelectionne (){
@@ -170,6 +171,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         System.out.println(secteur);
         if(secteur != null)
         {
+             System.out.println("On est dans la boucle : coucou"); 
              getVue().jComboBoxSecteur.setSelectedItem(secteur.getLibelleSec());
         } else 
         {
