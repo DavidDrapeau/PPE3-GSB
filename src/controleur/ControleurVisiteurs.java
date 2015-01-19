@@ -131,7 +131,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         getVue().jComboBoxLabo.removeAllItems();
         vue.jComboBoxLabo.addItem("aucun");
         for (Labo labo : lesLabos) {
-            getVue().jComboBoxLabo.addItem(labo);
+            getVue().jComboBoxLabo.addItem(labo.getNomLabo());
         }
     }
 
@@ -147,12 +147,12 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         getVue().jComboBoxSecteur.removeAllItems();
         vue.jComboBoxSecteur.addItem("aucun");
         for (Secteur secteur : lesSecteurs) {
-            getVue().jComboBoxSecteur.addItem(secteur);
+            getVue().jComboBoxSecteur.addItem(secteur.getLibelleSec());
         }
     }
     
     
-        /**
+     /**
      * Affiche les détails du visiteur courant selectionné dans la comboBox recherche
      *
      */
@@ -165,28 +165,22 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         getVue().jTextFieldAdresse.setText(visiteurSelect.getAdresse());
         getVue().jTextFieldVille.setText(visiteurSelect.getVille());
         getVue().jTextFieldVilleNumCp.setText(visiteurSelect.getCp());
-        
-         
+
         Secteur secteur = visiteurSelect.getSecteur();
-        System.out.println(secteur);
-        if(secteur != null)
-        {
-             System.out.println("On est dans la boucle : coucou"); 
-             getVue().jComboBoxSecteur.setSelectedItem(secteur.getLibelleSec());
-        } else 
-        {
-            getVue().jComboBoxSecteur.setSelectedItem("aucun");
+        System.out.println("Secteur:\n" + secteur);
+        if (secteur != null) {
+            vue.jComboBoxSecteur.setSelectedItem(secteur.getLibelleSec());
+        } else {
+            vue.jComboBoxSecteur.setSelectedItem("aucun");
         }
-       
+        
         Labo labo = visiteurSelect.getLabo();
-        System.out.println(labo);
-        if(labo != null)
-        {
-            getVue().jComboBoxLabo.setSelectedItem(labo.getNomLabo());
-        } else 
-        {
-             getVue().jComboBoxLabo.setSelectedItem("aucun");
-        } 
+        System.out.println("Labo:\n" + labo);
+        if (labo != null) {
+            vue.jComboBoxLabo.setSelectedItem(labo.getNomLabo());
+        } else {
+            vue.jComboBoxLabo.setSelectedItem("aucun");
+        }
         
     }
     
