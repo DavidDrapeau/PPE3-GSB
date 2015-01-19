@@ -27,7 +27,7 @@ public class TestVisiteur {
         } catch (ParseException ex) {
             Logger.getLogger(TestVisiteur.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Etat du visiteur: " + vis);
+        System.out.println("Etat du visiteur: " + vis.toString2());
         
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
@@ -37,8 +37,8 @@ public class TestVisiteur {
         vis.setAdresse("26 rue de la Liberté");
         vis.setCp("44200");
         vis.setVille("Nantes");
-        vis.setCodeSecteur(null);
+        vis.setCodeSecteur("S");
         vis.setCodeLabo("df");
-        System.out.println("Etat du visiteur : " + vis);
+        System.out.println("Etat du visiteur : " + vis.toString2());
     }
 }

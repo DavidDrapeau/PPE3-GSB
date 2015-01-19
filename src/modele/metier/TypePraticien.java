@@ -11,23 +11,23 @@ package modele.metier;
  * @author btssio
  */
 public class TypePraticien {
-    private int codeType;
+    private String codeType;
     private String libelle;
     private String lieu;
 
 //Constructeur TypePraticien
-    public TypePraticien(int codeType, String libelle, String lieu) {
+    public TypePraticien(String codeType, String libelle, String lieu) {
         this.codeType = codeType;
         this.libelle = libelle;
         this.lieu = lieu;
     }
     
 //Getters et setters   
-    public int getCodeType() {
+    public String getCodeType() {
         return codeType;
     }
 
-    public void setCodeType(int codeType) {
+    public void setCodeType(String codeType) {
         this.codeType = codeType;
     }
 

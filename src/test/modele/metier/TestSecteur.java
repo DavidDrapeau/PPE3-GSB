@@ -18,12 +18,12 @@ public class TestSecteur {
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
         sec = new Secteur("N","Nord");
-        System.out.println("Etat du secteur: " + sec);
+        System.out.println("Etat du secteur: " + sec.toString2());
         
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
         sec.setCodeSec("S");
         sec.setLibelleSec("Sud");
-        System.out.println("Etat du secteur : " + sec);
+        System.out.println("Etat du secteur : " + sec.toString2());
     }
 }

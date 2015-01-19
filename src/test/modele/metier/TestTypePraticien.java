@@ -6,25 +6,25 @@
 
 package test.modele.metier;
 
-import modele.metier.Labo;
+import modele.metier.TypePraticien;
 
 /**
  *
  * @author btssio
  */
-public class TestLabo {
+public class TestTypePraticien {
     public static void main(String[] args) {
-        Labo lab=null;
+        TypePraticien typePrat=null;
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
-        lab = new Labo("GY","Gyverni","Merss Suzanne");
-        System.out.println("Etat du labo: " + lab.toString2());
+        typePrat = new TypePraticien("GY","Médecine de ville","Cabinet");
+        System.out.println("Etat du type de praticien: " + typePrat.toString02());
         
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
-        lab.setCodeLabo("BC");
-        lab.setNomLabo("Bichat");
-        lab.setChefVente("Haykana Yosaku");
-        System.out.println("Etat du labo : " + lab.toString2());
+        typePrat.setCodeType("MV");
+        typePrat.setLibelle("Médecine de ville");
+        typePrat.setLieu("Cabinet");
+        System.out.println("Etat du type de praticien : " + typePrat.toString02());
     }
 }
