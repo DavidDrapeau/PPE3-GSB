@@ -6,21 +6,21 @@
 
 package test.modele.dao;
 
-import modele.dao.DaoVisiteur;
-import modele.metier.Visiteur;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modele.dao.DaoException;
+import modele.dao.DaoTypePraticien;
 import modele.dao.Jdbc;
+import modele.metier.TypePraticien;
 
 /**
  *
  * @author btssio
  */
-public class TestDaoVisiteur {
-    
+public class TestDaoTypePraticien {
     public static void main(String[] args) {
         
         java.sql.Connection cnx = null;
@@ -28,7 +28,7 @@ public class TestDaoVisiteur {
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_SelectUnique("a17");
+            test1_SelectUnique("PO");
             System.out.println("Test1 effectué : sélection unique\n");
             test2_SelectMultiple();
             System.out.println("Test2 effectué : sélection multiple\n");
@@ -55,41 +55,38 @@ public class TestDaoVisiteur {
      * @throws SQLException
      */
     public static void test0_Connexion() throws ClassNotFoundException, SQLException {
-        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ora_2slamppe_eq4", "equipe04");
+        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
         Jdbc.getInstance().connecter();
         Connection cnx = Jdbc.getInstance().getConnexion();
     }
 
     /**
-     * Affiche un visiteur d'après son identifiant
-     *
-     * @param matricule : identifiant du visiteur à afficher
-     * @throws SQLException
+     * Test de selection unique qui récupère le type d'un praticien en fonction de son identifiant
+     * @param codeType
+     * @throws SQLException 
      */
-    public static void test1_SelectUnique(String matricule) throws SQLException {
-        Visiteur ceVisiteur = DaoVisiteur.selectOne(matricule);
-        if ( ceVisiteur != null) {
-            System.out.println("Visiteur d'identifiant : " + matricule + " : " + ceVisiteur.toString());
+    public static void test1_SelectUnique(String codeType) throws SQLException {
+        TypePraticien ceTypePraticien = DaoTypePraticien.selectOne(codeType);
+        if ( ceTypePraticien != null) {
+            System.out.println("Type de praticien d'identifiant : " + codeType + " : " + ceTypePraticien.toString02());
         } else {
-            System.out.println("Le visiteur d'identifiant : " + matricule + " n'existe pas ");
+            System.out.println("Le type de praticien d'identifiant : " +  codeType + " n'existe pas ");
         }
         
     }
 
     /**
-     * Affiche tous les visiteurs
-     *
-     * @throws SQLException
+     * Test de selection multiple qui récupère tous les types de praticien
+     * @throws SQLException 
      */
     public static void test2_SelectMultiple() throws SQLException {
-        List<Visiteur> desVisiteurs;
+        List<TypePraticien> desTypePraticiens;
         try {
-            desVisiteurs = DaoVisiteur.selectAll();
-            System.out.println("Les visiteurs lus : " + desVisiteurs.toString());
+            desTypePraticiens = DaoTypePraticien.selectAll();
+            System.out.println("Les types de praticiens lus : " + desTypePraticiens.toString());
         } catch (DaoException ex) {
-            Logger.getLogger(TestDaoVisiteur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDaoPraticien.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
-    
 }
