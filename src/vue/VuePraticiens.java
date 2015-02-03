@@ -100,7 +100,7 @@ public class VuePraticiens extends VueAbstraite {
                                 .addComponent(jComboBoxLieu, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
+                                .addGap(77, 77, 77)
                                 .addComponent(jButtonSuiv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonClose))))

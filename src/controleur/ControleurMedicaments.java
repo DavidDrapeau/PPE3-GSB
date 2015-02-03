@@ -6,9 +6,6 @@
 
 package controleur;
 
-import vue.VueMedicaments;
-import java.sql.*;
-import java.util.*;
 /**
  *
  * @author btssio
