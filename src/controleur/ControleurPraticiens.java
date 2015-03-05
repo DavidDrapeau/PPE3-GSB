@@ -7,6 +7,10 @@
 package controleur;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modele.dao.DaoException;
+import modele.dao.DaoPraticien;
 import modele.metier.Praticien;
 import modele.metier.TypePraticien;
 import vue.VuePraticiens;
@@ -23,5 +27,40 @@ public class ControleurPraticiens extends CtrlAbstrait{
 
     public ControleurPraticiens(CtrlPrincipal ctrlPrincipal) {
         super(ctrlPrincipal);
+        
+        //récupère la liste des praticiens
+        try {
+            lesPraticiens = DaoPraticien.selectAll();
+            afficherListePraticiens(lesPraticiens);
+        } catch (DaoException ex) {
+            Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
+    
+    
+    /**
+     * Liste des Praticiens
+     *
+     * @param lesPraticiens : Liste de praticiens
+     */
+    public void afficherListePraticiens(List<Praticien> lesPraticiens) {
+        getVue().jComboBoxSearch.removeAllItems();
+        for (Praticien praticien : lesPraticiens) {           
+            getVue().jComboBoxSearch.addItem(praticien);
+        }
+    }
+    
+    
+    //ACCESSEUR ET MUTATEUR
+    @Override
+    public VuePraticiens getVue() {
+        return vue;
+    }
+
+    public void setVue(VuePraticiens vue) {
+        this.vue = vue;
+    }
+    
+    
 }

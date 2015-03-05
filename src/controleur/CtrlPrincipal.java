@@ -9,6 +9,7 @@ package controleur;
 import vue.VueAbstraite;
 import vue.VueAccueil;
 import vue.VueAuthentification;
+import vue.VuePraticiens;
 import vue.VueVisiteurs;
 
 /**
@@ -20,6 +21,7 @@ public class CtrlPrincipal {
     private ControleurAuth ControleurAuth = null;
     private ControleurAccueil ControleurAccueil = null;
     private ControleurVisiteurs ControleurVisiteurs = null;
+    private ControleurPraticiens ControleurPraticiens = null;
     VueAbstraite vueA = null;
     CtrlAbstrait ctrlA = null;
     VueAuthentification vueC = new VueAuthentification(ctrlA);
@@ -45,6 +47,9 @@ public class CtrlPrincipal {
                 break;
             case VISITEUR_RETOUR: // retour à vueMenu depuis la vueVisiteur
                 visiteurQuitter();
+                break;
+            case PRATICIEN_AFFICHER: //activation de vuePraticiens depuis vueMenu
+                afficherPraticien();
                 break;
             case MENU_FICHIER_QUITTER: // fin de l'application depuis vueMenu
                 menuFichierQuitter();
@@ -110,6 +115,26 @@ public class CtrlPrincipal {
         ControleurVisiteurs.getVue().setVisible(false);
         ControleurAccueil.getVue().setEnabled(true);
         ControleurAccueil.getVue().setVisible(true);
+    }
+    
+    private void afficherPraticien() {
+        if(ControleurAccueil == null){
+            VueAccueil vueM = new VueAccueil(ctrlA);
+            ControleurAccueil = new ControleurAccueil(this);
+        }
+        if (ControleurPraticiens == null) {
+            VuePraticiens vueV = new VuePraticiens(ctrlA);
+            ControleurPraticiens = new ControleurPraticiens(this);
+        } else {
+            // si la le contrôleur et sa vue existent déjà
+            // il faut rafraîchir le contenu à partir de la base de données
+           // ControleurPraticiens.afficherPraticien();
+        }
+        // vuPresence est une fenêtre modale :
+        // -> vueMenu reste visible, mais n'est pas active
+        ControleurAccueil.getVue().setEnabled(false);
+        ControleurAccueil.getVue().setVisible(false);
+        ControleurPraticiens.getVue().setVisible(true);
     }
 
 }

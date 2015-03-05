@@ -31,6 +31,15 @@ public class ControleurAccueil extends CtrlAbstrait{
             }
         });
         
+        //Ecouteur sur le bouton Praticien
+        vue.jButtonPrati.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                System.out.println("Coucou");
+                afficherPraticiens();
+            }
+        });
+        
         //Ecouteur Bouton quitter
         vue.jButtonQuitter.addActionListener(new ActionListener() {
             @Override
@@ -49,6 +58,12 @@ public class ControleurAccueil extends CtrlAbstrait{
     public void afficherVisiteurs(){
         CtrlPrincipal CtrlP = new CtrlPrincipal();
         CtrlP.action(EnumAction.VISITEUR_AFFICHER);
+        vue.setVisible(false);
+    }
+    
+    public void afficherPraticiens(){
+        CtrlPrincipal CtrlP = new CtrlPrincipal();
+        CtrlP.action(EnumAction.PRATICIEN_AFFICHER);
         vue.setVisible(false);
     }
     
