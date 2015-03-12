@@ -15,6 +15,8 @@ import modele.dao.DaoException;
 import modele.dao.DaoPraticien;
 import modele.metier.Praticien;
 import modele.metier.RapportVisite;
+import modele.metier.TypePraticien;
+import vue.VuePraticiens;
 import vue.VueRapportsDeVisites;
 import vue.VueVisiteurs;
 
@@ -51,6 +53,19 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         } catch (DaoException ex) {
             Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //Ecouteur Bouton Details concernant un praticien
+        vue.jButtonDetails.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    //System.out.println("Coucou");
+                    detailsPraticien();
+                } catch (Exception ex) {
+                    Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
     
     
@@ -76,8 +91,17 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         }
     }
     
+    public void detailsPraticien(){
+//        CtrlPrincipal CtrlP = new CtrlPrincipal();
+//        CtrlP.action(EnumAction.PRATICIEN_AFFICHER);
+          getCtrlPrincipal().action(EnumAction.PRATICIEN_AFFICHER);
+        
+        
+        
+    }
     
-    // ACCESSEURS et MUTATEURS
+    
+    // ACCESSEURS et MUTATEURS Vue Rapports de visites
     @Override
     public VueRapportsDeVisites getVue() {
         return (VueRapportsDeVisites)vue;
@@ -86,4 +110,6 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
     public void setVue(VueRapportsDeVisites vue) {
         this.vue = vue;
     }
+    
+    
 }

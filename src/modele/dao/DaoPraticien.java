@@ -41,6 +41,10 @@ public class DaoPraticien {
             
             unPraticien = new Praticien(numPrat, nomPrat, prenomPrat, adressePrat, cpPrat, villePrat, coefNotoriete, typePraticien);
         }
+        pstmt.close();
+        pstmt = null;
+        rs.close();
+        rs = null;
         return unPraticien;
     }
      
@@ -69,6 +73,8 @@ public class DaoPraticien {
                 unPraticien = new Praticien(numPrat, nomPrat, prenomPrat, adressePrat, cpPrat, villePrat, coefNotoriete, typePraticien);
                 lesPraticiens.add(unPraticien);
             }
+            pstmt.close();
+            rs.close();
         } catch (SQLException ex) {
             throw new DaoException("DaoPraticien - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }

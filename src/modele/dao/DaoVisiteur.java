@@ -132,6 +132,8 @@ public class DaoVisiteur {
                     lesVisiteurs.add(unVisiteur);
                    
             }
+            pstmt.close();
+            rs.close();
          } catch (SQLException ex) {
             throw new DaoException("DaoVisiteur - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }

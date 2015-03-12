@@ -65,6 +65,8 @@ public class DaoRapportVisite {
                 unRapportVisite = new RapportVisite(matricule, numRap, date, bilan, motif, praticien);
                 lesRapportVisites.add(unRapportVisite);
             }
+            pstmt.close();
+            rs.close();
         } catch (SQLException ex) {
             throw new DaoException("DaoRapportVisite - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }

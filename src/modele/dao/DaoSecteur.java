@@ -54,6 +54,8 @@ public class DaoSecteur {
                 unSecteur = new Secteur(codeSec, libelleSec);
                 lesSecteurs.add(unSecteur);
             }
+            pstmt.close();
+            rs.close();
         } catch (SQLException ex) {
             throw new DaoException("DaoSecteur - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }

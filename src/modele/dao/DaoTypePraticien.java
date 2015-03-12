@@ -36,6 +36,7 @@ public class DaoTypePraticien {
             unTypePraticien = new TypePraticien(codeType, libelle, lieu);
         }
         return unTypePraticien;
+        
     }
      
     //Récupérer tous les types de praticiens
@@ -58,6 +59,8 @@ public class DaoTypePraticien {
                 unTypePraticien = new TypePraticien(codeType, libelle, lieu);
                 lesTypePraticiens.add(unTypePraticien);
             }
+            pstmt.close();
+            rs.close();
         } catch (SQLException ex) {
             throw new DaoException("DaoPraticien - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }

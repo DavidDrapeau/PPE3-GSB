@@ -65,20 +65,17 @@ public class ControleurAccueil extends CtrlAbstrait{
     }
     
     public void afficherVisiteurs(){
-        CtrlPrincipal CtrlP = new CtrlPrincipal();
-        CtrlP.action(EnumAction.VISITEUR_AFFICHER);
+        this.getCtrlPrincipal().action(EnumAction.VISITEUR_AFFICHER);
         vue.setVisible(false);
     }
     
     public void afficherPraticiens(){
-        CtrlPrincipal CtrlP = new CtrlPrincipal();
-        CtrlP.action(EnumAction.PRATICIEN_AFFICHER);
+        this.getCtrlPrincipal().action(EnumAction.PRATICIEN_AFFICHER);
         vue.setVisible(false);
     }
     
     public void afficherRapports(){
-        CtrlPrincipal CtrlP = new CtrlPrincipal();
-        CtrlP.action(EnumAction.RAPPORT_AFFICHER);
+        this.getCtrlPrincipal().action(EnumAction.RAPPORT_AFFICHER);
         vue.setVisible(false);
     }
             

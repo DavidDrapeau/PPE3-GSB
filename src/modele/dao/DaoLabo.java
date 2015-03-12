@@ -55,6 +55,8 @@ public class DaoLabo {
                 unLabo = new Labo(codeLabo, nomLabo, chefVente);
                 lesLabos.add(unLabo);
             }
+            pstmt.close();
+            rs.close();
         } catch (SQLException ex) {
             throw new DaoException("DaoLabo - chargerUnEnregistrement : pb JDBC\n" + ex.getMessage());
         }
