@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modele.dao.DaoException;
+import modele.dao.DaoPraticien;
 import modele.metier.Praticien;
 import modele.metier.RapportVisite;
 import vue.VueRapportsDeVisites;
@@ -41,6 +43,14 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
                 }
             }
         });
+        
+        //récupère la liste des praticiens
+        try {
+            lesPraticiens = DaoPraticien.selectAll();
+            afficherListePraticiens(lesPraticiens);
+        } catch (DaoException ex) {
+            Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
@@ -53,6 +63,19 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
     public void rapportQuitter() throws Exception {
         this.getCtrlPrincipal().action(EnumAction.RAPPORT_RETOUR);
     }
+    
+    /**
+     * Liste des Praticiens
+     *
+     * @param lesPraticiens : Liste de praticiens
+     */
+    public void afficherListePraticiens(List<Praticien> lesPraticiens) {
+        getVue().jComboBoxPraticien.removeAllItems();
+        for (Praticien praticien : lesPraticiens) {  
+            getVue().jComboBoxPraticien.addItem(praticien);
+        }
+    }
+    
     
     // ACCESSEURS et MUTATEURS
     @Override
