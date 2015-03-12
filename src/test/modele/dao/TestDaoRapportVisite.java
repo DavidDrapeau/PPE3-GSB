@@ -6,21 +6,21 @@
 
 package test.modele.dao;
 
-import modele.dao.DaoPraticien;
-import modele.metier.Praticien;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modele.dao.DaoException;
+import modele.dao.DaoRapportVisite;
 import modele.dao.Jdbc;
+import modele.metier.RapportVisite;
 
 /**
  *
  * @author btssio
  */
-public class TestDaoPraticien {
-    
+public class TestDaoRapportVisite {
     public static void main(String[] args) {
         
         java.sql.Connection cnx = null;
@@ -28,7 +28,7 @@ public class TestDaoPraticien {
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_SelectUnique("12");
+            test1_SelectUnique("a131");
             System.out.println("Test1 effectué : sélection unique\n");
             test2_SelectMultiple();
             System.out.println("Test2 effectué : sélection multiple\n");
@@ -61,33 +61,32 @@ public class TestDaoPraticien {
     }
 
     /**
-     * Test de selection unique qui récupère un praticien en fonction de son identifiant
-     * @param numPrat : identifiant du praticien
+     * Test de selection unique qui récupère un rapport de visite en fonction de son matricule
+     * @param matricule : identifiant du rapport de visite
      * @throws SQLException 
      */
-    public static void test1_SelectUnique(String numPrat) throws SQLException {
-        Praticien cePraticien = DaoPraticien.selectOne(numPrat);
-        if ( cePraticien != null) {
-            System.out.println("Praticien d'identifiant : " + numPrat + " : " + cePraticien.toString02());
+    public static void test1_SelectUnique(String matricule) throws SQLException {
+        RapportVisite ceRapportVisite = DaoRapportVisite.selectOne(matricule);
+        if ( ceRapportVisite != null) {
+            System.out.println("Rapport de visite de matricule : " + matricule + " : " + ceRapportVisite.toString2());
         } else {
-            System.out.println("Le praticien d'identifiant : " +  numPrat + " n'existe pas ");
+            System.out.println("Le rapport de visite de matricule : " +  matricule + " n'existe pas ");
         }
         
     }
 
     /**
-     * Test de selection multiple qui récupère tous les praticiens
+     * Test de selection multiple qui récupère tous les rapports de visites
      * @throws SQLException 
      */
     public static void test2_SelectMultiple() throws SQLException {
-        List<Praticien> desPraticiens;
+        List<RapportVisite> desRapportVisites;
         try {
-            desPraticiens = DaoPraticien.selectAll();
-            System.out.println("Les praticiens lus : " + desPraticiens.toString());
+            desRapportVisites = DaoRapportVisite.selectAll();
+            System.out.println("Les rapports de visites lus : " + desRapportVisites.toString());
         } catch (DaoException ex) {
             Logger.getLogger(TestDaoPraticien.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
-    
 }

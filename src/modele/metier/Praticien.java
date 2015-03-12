@@ -11,17 +11,19 @@ package modele.metier;
  * @author btssio
  */
 public class Praticien {
-    private int numPrat;
+    private String numPrat;
     private String nomPrat;
     private String prenomPrat;
     private String adressePrat;
     private String cpPrat;
     private String villePrat;
-    private float coefNotoriete;
-    private String codeType;
-
- //Constructeur Praticien
-    public Praticien(int numPrat, String nomPrat, String prenomPrat, String adressePrat, String cpPrat, String villePrat, float coefNotoriete, String codeType) {
+    private String coefNotoriete;
+    private String codeTypePraticien;
+    
+    private TypePraticien typePraticien;
+    
+  
+    public Praticien(String numPrat, String nomPrat, String prenomPrat, String adressePrat, String cpPrat, String villePrat, String coefNotoriete, TypePraticien typePraticien) {
         this.numPrat = numPrat;
         this.nomPrat = nomPrat;
         this.prenomPrat = prenomPrat;
@@ -29,15 +31,28 @@ public class Praticien {
         this.cpPrat = cpPrat;
         this.villePrat = villePrat;
         this.coefNotoriete = coefNotoriete;
-        this.codeType = codeType;
+        this.typePraticien = typePraticien;
     }
 
- //Getters et setters   
-    public int getNumPrat() {
+ //Constructeur Praticien
+    public Praticien(String numPrat, String nomPrat, String prenomPrat, String adressePrat, String cpPrat, String villePrat, String coefNotoriete, String codeTypePraticien) {
+        this.numPrat = numPrat;
+        this.nomPrat = nomPrat;
+        this.prenomPrat = prenomPrat;
+        this.adressePrat = adressePrat;
+        this.cpPrat = cpPrat;
+        this.villePrat = villePrat;
+        this.coefNotoriete = coefNotoriete;
+        this.codeTypePraticien = codeTypePraticien;
+    }
+    
+  
+    //Getters et setters   
+    public String getNumPrat() {
         return numPrat;
     }
 
-    public void setNumPrat(int numPrat) {
+    public void setNumPrat(String numPrat) {
         this.numPrat = numPrat;
     }
 
@@ -81,25 +96,37 @@ public class Praticien {
         this.villePrat = villePrat;
     }
 
-    public float getCoefNotoriete() {
+    public String getCoefNotoriete() {
         return coefNotoriete;
     }
 
-    public void setCoefNotoriete(float coefNotoriete) {
+    public void setCoefNotoriete(String coefNotoriete) {
         this.coefNotoriete = coefNotoriete;
     }
 
-    public String getCodeType() {
-        return codeType;
+    public String getCodeTypePraticien() {
+        return codeTypePraticien;
     }
 
-    public void setCodeType(String codeType) {
-        this.codeType = codeType;
+    public void setCodeTypePraticien(String typePraticien) {
+        this.codeTypePraticien = typePraticien;
     }
 
     
+    
+    public TypePraticien getTypePraticien() {
+        return typePraticien;
+    }
+
+    public void setTypePraticien(TypePraticien typePraticien) {
+        this.typePraticien = typePraticien;
+    }
+
+    
+
+    
     public String toString02() {
-        return "Praticien{" + "numPrat=" + numPrat + ", nomPrat=" + nomPrat + ", prenomPrat=" + prenomPrat + ", adressePrat=" + adressePrat + ", cpPrat=" + cpPrat + ", villePrat=" + villePrat + ", coefNotoriete=" + coefNotoriete + ", codeType=" + codeType + '}';
+        return "Praticien{" + "numPrat=" + numPrat + ", nomPrat=" + nomPrat + ", prenomPrat=" + prenomPrat + ", adressePrat=" + adressePrat + ", cpPrat=" + cpPrat + ", villePrat=" + villePrat + ", coefNotoriete=" + coefNotoriete + ", typePraticien=" + typePraticien + '}';
     }
     
     @Override

@@ -147,6 +147,7 @@ public class Visiteur {
     }
     
     //Méthodde toString pour l'affichage du nom et du prénom du visiteur dans la comboBox de recherche
+    @Override
     public String toString() {
         return nom + " " + prenom;
     }

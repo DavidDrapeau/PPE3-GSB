@@ -6,12 +6,13 @@
 
 package modele.dao;
 
-import modele.metier.Praticien;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import modele.metier.Praticien;
+import modele.metier.TypePraticien;
 
 /**
  *
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class DaoPraticien {
     //Récupérer un praticien d'après son id
-     public static Praticien selectOne(int numPrat) throws SQLException {
+     public static Praticien selectOne(String numPrat) throws SQLException {
         Praticien unPraticien = null;
         ResultSet rs;
         PreparedStatement pstmt;
@@ -27,7 +28,7 @@ public class DaoPraticien {
         // préparer la requête
         String requete = "SELECT * FROM PRATICIEN WHERE PRA_NUM= ?";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
-        pstmt.setInt(1, numPrat);
+        pstmt.setString(1, numPrat);
         rs = pstmt.executeQuery();
         if (rs.next()) {
             String nomPrat = rs.getString("PRA_NOM");
@@ -35,10 +36,10 @@ public class DaoPraticien {
             String adressePrat = rs.getString("PRA_ADRESSE");
             String cpPrat = rs.getString("PRA_CP");
             String villePrat = rs.getString("PRA_VILLE");
-            float coefNotoriete = rs.getFloat("PRA_COEFNOTORIETE");
-            String codeType = rs.getString("TYP_CODE");
+            String coefNotoriete = rs.getString("PRA_COEFNOTORIETE");
+            String typePraticien = rs.getString("TYP_CODE");
             
-            unPraticien = new Praticien(numPrat, nomPrat, prenomPrat, adressePrat, cpPrat, villePrat, coefNotoriete, codeType);
+            unPraticien = new Praticien(numPrat, nomPrat, prenomPrat, adressePrat, cpPrat, villePrat, coefNotoriete, typePraticien);
         }
         return unPraticien;
     }
@@ -56,16 +57,16 @@ public class DaoPraticien {
             pstmt = jdbc.getConnexion().prepareStatement(requete);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                int numPrat = rs.getInt("PRA_NUM");
+                String numPrat = rs.getString("PRA_NUM");
                 String nomPrat = rs.getString("PRA_NOM");
                 String prenomPrat = rs.getString("PRA_PRENOM");
                 String adressePrat = rs.getString("PRA_ADRESSE");
                 String cpPrat = rs.getString("PRA_CP");
                 String villePrat = rs.getString("PRA_VILLE");
-                float coefNotoriete = rs.getFloat("PRA_COEFNOTORIETE");
-                String codeType = rs.getString("TYP_CODE");
+                String coefNotoriete = rs.getString("PRA_COEFNOTORIETE");
+                TypePraticien typePraticien = DaoTypePraticien.selectOne(rs.getString("TYP_CODE"));
 
-                unPraticien = new Praticien(numPrat, nomPrat, prenomPrat, adressePrat, cpPrat, villePrat, coefNotoriete, codeType);
+                unPraticien = new Praticien(numPrat, nomPrat, prenomPrat, adressePrat, cpPrat, villePrat, coefNotoriete, typePraticien);
                 lesPraticiens.add(unPraticien);
             }
         } catch (SQLException ex) {

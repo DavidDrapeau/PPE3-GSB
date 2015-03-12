@@ -10,6 +10,7 @@ import vue.VueAbstraite;
 import vue.VueAccueil;
 import vue.VueAuthentification;
 import vue.VuePraticiens;
+import vue.VueRapportsDeVisites;
 import vue.VueVisiteurs;
 
 /**
@@ -22,6 +23,7 @@ public class CtrlPrincipal {
     private ControleurAccueil ControleurAccueil = null;
     private ControleurVisiteurs ControleurVisiteurs = null;
     private ControleurPraticiens ControleurPraticiens = null;
+    private ControleurRapportsVisites ControleurRapportsVisites = null;
     VueAbstraite vueA = null;
     CtrlAbstrait ctrlA = null;
     VueAuthentification vueC = new VueAuthentification(ctrlA);
@@ -51,6 +53,15 @@ public class CtrlPrincipal {
             case PRATICIEN_AFFICHER: //activation de vuePraticiens depuis vueMenu
                 afficherPraticien();
                 break;
+            case PRATICIEN_RETOUR: // retour à vueMenu depuis la vuePraticien
+                praticienQuitter();
+                break;
+            case RAPPORT_AFFICHER: // activation de vueRapportsDeVisites depuis vueMenu
+                afficherRapport();
+                break;
+            case RAPPORT_RETOUR: // retour à vueMenu depuis la vueRapportsDeVisites
+                rapportQuitter();
+                break;    
             case MENU_FICHIER_QUITTER: // fin de l'application depuis vueMenu
                 menuFichierQuitter();
                 break;
@@ -135,6 +146,52 @@ public class CtrlPrincipal {
         ControleurAccueil.getVue().setEnabled(false);
         ControleurAccueil.getVue().setVisible(false);
         ControleurPraticiens.getVue().setVisible(true);
+    }
+    
+    /**
+     * Transition vuePraticien / vueMenu
+     */
+    private void praticienQuitter() {
+        if (ControleurAccueil == null) {
+            ControleurAccueil = new ControleurAccueil(this);
+        }
+        ControleurPraticiens.getVue().setVisible(false);
+        ControleurAccueil.getVue().setEnabled(true);
+        ControleurAccueil.getVue().setVisible(true);
+    }
+    
+    
+    private void afficherRapport() {
+        if(ControleurAccueil == null){
+            VueAccueil vueM = new VueAccueil(ctrlA);
+            ControleurAccueil = new ControleurAccueil(this);
+        }
+        if (ControleurRapportsVisites == null) {
+            VueRapportsDeVisites vueV = new VueRapportsDeVisites(ctrlA);
+            ControleurRapportsVisites = new ControleurRapportsVisites(this);
+        } else {
+            // si la le contrôleur et sa vue existent déjà
+            // il faut rafraîchir le contenu à partir de la base de données
+           // ControleurPraticiens.afficherPraticien();
+        }
+        // vuPresence est une fenêtre modale :
+        // -> vueMenu reste visible, mais n'est pas active
+        ControleurAccueil.getVue().setEnabled(false);
+        ControleurAccueil.getVue().setVisible(false);
+        ControleurRapportsVisites.getVue().setVisible(true);
+    }
+    
+    
+    /**
+     * Transition vueRapportsVisites / vueMenu
+     */
+    private void rapportQuitter() {
+        if (ControleurAccueil == null) {
+            ControleurAccueil = new ControleurAccueil(this);
+        }
+        ControleurRapportsVisites.getVue().setVisible(false);
+        ControleurAccueil.getVue().setEnabled(true);
+        ControleurAccueil.getVue().setVisible(true);
     }
 
 }

@@ -40,6 +40,15 @@ public class ControleurAccueil extends CtrlAbstrait{
             }
         });
         
+        //Ecouteur sur le bouton Rapport
+        vue.jButtonCpt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                System.out.println("Coucou");
+                afficherRapports();
+            }
+        });
+        
         //Ecouteur Bouton quitter
         vue.jButtonQuitter.addActionListener(new ActionListener() {
             @Override
@@ -67,6 +76,12 @@ public class ControleurAccueil extends CtrlAbstrait{
         vue.setVisible(false);
     }
     
+    public void afficherRapports(){
+        CtrlPrincipal CtrlP = new CtrlPrincipal();
+        CtrlP.action(EnumAction.RAPPORT_AFFICHER);
+        vue.setVisible(false);
+    }
+            
     /**
      * clic sur la commande Quitter du menu Fichier Le contrôleur délègue
      * l'action au contrôleur frontal
