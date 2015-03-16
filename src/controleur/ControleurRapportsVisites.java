@@ -100,6 +100,17 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
     }
     
     
+       /**
+     * Liste des Praticiens
+     *
+     * @param lesPraticiens : Liste de praticiens
+     */
+    public void afficherListePraticiens(List<Praticien> lesPraticiens) {
+        getVue().jComboBoxPraticien.removeAllItems();
+        for (Praticien praticien : lesPraticiens) {  
+            getVue().jComboBoxPraticien.addItem(praticien.toString());
+        }
+    }
     
     /**
      * Afficher les informations concernant un rapport de visite sélectionné en fonction de son matricule
@@ -113,7 +124,7 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         getVue().jTextAreaBilan.setText(unRapport.getBilan());
         Praticien unPraticien = unRapport.getPraticien();
         System.out.println(unPraticien);
-        getVue().jComboBoxPraticien.setSelectedItem(unPraticien);
+        getVue().jComboBoxPraticien.setSelectedItem(unPraticien.toString());
     }
     
     /**
@@ -139,17 +150,7 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
     }
     
 
-    /**
-     * Liste des Praticiens
-     *
-     * @param lesPraticiens : Liste de praticiens
-     */
-    public void afficherListePraticiens(List<Praticien> lesPraticiens) {
-        getVue().jComboBoxPraticien.removeAllItems();
-        for (Praticien praticien : lesPraticiens) {  
-            getVue().jComboBoxPraticien.addItem(praticien);
-        }
-    }
+ 
     
     
     /**
