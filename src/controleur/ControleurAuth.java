@@ -60,11 +60,8 @@ public class ControleurAuth extends CtrlAbstrait{
     public void valider() throws Exception {
         // récupération du login et mot de passe pour vérification
         String login = vue.jAuthLogin.getText();
-        System.out.println(login);
         String mdp = vue.jAuthPass.getText();
-        System.out.println(mdp);
         connexion = DaoVisiteur.verifierLoginMdp(login, mdp);
-        System.out.println(connexion);
         if (connexion) {
             //System.out.print("connexion réussi");
             CtrlPrincipal ctrlP = new CtrlPrincipal();

@@ -159,7 +159,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
      */
     public void visiteurSelectionne (){
         Visiteur visiteurSelect = (Visiteur) getVue().jComboBoxSearch.getSelectedItem();
-        System.out.println(visiteurSelect.toString2());
+//        System.out.println(visiteurSelect.toString2());
         
         getVue().jTextFieldNom.setText(visiteurSelect.getNom());
         getVue().jTextFieldPrenom.setText(visiteurSelect.getPrenom());
@@ -168,7 +168,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         getVue().jTextFieldVilleNumCp.setText(visiteurSelect.getCp());
 
         Secteur secteur = visiteurSelect.getSecteur();
-        System.out.println("Secteur:\n" + secteur);
+//        System.out.println("Secteur:\n" + secteur);
         if (secteur != null) {
             vue.jComboBoxSecteur.setSelectedItem(secteur.getLibelleSec());
         } else {
@@ -176,7 +176,7 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         }
         
         Labo labo = visiteurSelect.getLabo();
-        System.out.println("Labo:\n" + labo);
+//        System.out.println("Labo:\n" + labo);
         if (labo != null) {
             vue.jComboBoxLabo.setSelectedItem(labo.getNomLabo());
         } else {
@@ -185,8 +185,8 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         
     }
     
-    /**Bouton suivant. affiche le visiteur suivant
-    *
+    /**
+    * Bouton suivant. affiche le visiteur suivant
     */
     public void visiteurSuivant(){
         int index = getVue().jComboBoxSearch.getSelectedIndex() + 1;
@@ -196,8 +196,9 @@ public class ControleurVisiteurs extends CtrlAbstrait {
         getVue().jComboBoxSearch.setSelectedIndex(index);
         visiteurSelectionne();
     }
+    
     /**
-    Bouton précédent, affiche le visiteur précédent
+    * Bouton précédent, affiche le visiteur précédent
     */
     public void visiteurPrecedent(){
         int index = getVue().jComboBoxSearch.getSelectedIndex() - 1;

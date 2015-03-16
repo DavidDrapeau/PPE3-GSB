@@ -13,12 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modele.dao.DaoException;
 import modele.dao.DaoPraticien;
+import modele.dao.DaoRapportVisite;
 import modele.metier.Praticien;
 import modele.metier.RapportVisite;
-import modele.metier.TypePraticien;
-import vue.VuePraticiens;
 import vue.VueRapportsDeVisites;
-import vue.VueVisiteurs;
 
 /**
  *
@@ -27,6 +25,8 @@ import vue.VueVisiteurs;
 public class ControleurRapportsVisites extends CtrlAbstrait{
     private List<RapportVisite> lesRapportsVisites;
     private List<Praticien> lesPraticiens;
+    //indice pour charger les informations d'un rapport de visite
+    private int indice = 0 ;
     
     VueRapportsDeVisites vue = new VueRapportsDeVisites(this);
    
@@ -41,7 +41,7 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
                     //System.out.println("Coucou");
                     rapportQuitter();
                 } catch (Exception ex) {
-                    Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ControleurRapportsVisites.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -51,7 +51,15 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
             lesPraticiens = DaoPraticien.selectAll();
             afficherListePraticiens(lesPraticiens);
         } catch (DaoException ex) {
-            Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControleurRapportsVisites.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //récupère la liste des rapports de visites
+        try {
+            lesRapportsVisites = DaoRapportVisite.selectAll();
+            afficherDetailsRapport(lesRapportsVisites);
+        } catch (DaoException ex) {
+            Logger.getLogger(ControleurRapportsVisites.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         //Ecouteur Bouton Details concernant un praticien
@@ -59,12 +67,24 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    //System.out.println("Coucou");
                     detailsPraticien();
                 } catch (Exception ex) {
-                    Logger.getLogger(ControleurVisiteurs.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ControleurRapportsVisites.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        });
+        
+        //Ecouteur bouton précédent
+        vue.jButtonPrecedent.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                rapportPrecedent();
+            }           
+        });
+        //Ecouteur bouton suivant
+        vue.jButtonSuivant.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                rapportSuivant();
+            }           
         });
     }
     
@@ -79,6 +99,46 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         this.getCtrlPrincipal().action(EnumAction.RAPPORT_RETOUR);
     }
     
+    
+    
+    /**
+     * Afficher les informations concernant un rapport de visite sélectionné en fonction de son matricule
+     * @param lesRapportsVisites 
+     */
+    public void afficherDetailsRapport(List<RapportVisite> lesRapportsVisites){
+        RapportVisite unRapport = lesRapportsVisites.get(indice) ;
+        getVue().jTextFieldNum.setText(unRapport.getNumRap());
+        getVue().jTextFieldDate.setText(unRapport.getDate());
+        getVue().jTextFieldMotif.setText(unRapport.getMotif());
+        getVue().jTextAreaBilan.setText(unRapport.getBilan());
+        Praticien unPraticien = unRapport.getPraticien();
+        System.out.println(unPraticien);
+        getVue().jComboBoxPraticien.setSelectedItem(unPraticien);
+    }
+    
+    /**
+     * Charge le rapport de visite suivant
+     */
+    public void rapportSuivant(){
+        indice = indice + 1;
+        if (indice > lesRapportsVisites.size()-1) {
+            indice = 0;
+        }
+        afficherDetailsRapport(lesRapportsVisites);
+    }
+
+    /**
+     * Charge le rapport de visite précédent
+     */
+    public void rapportPrecedent(){
+        indice = indice - 1;
+        if (indice < 0) {
+            indice = lesRapportsVisites.size()-1;
+        }
+        afficherDetailsRapport(lesRapportsVisites);
+    }
+    
+
     /**
      * Liste des Praticiens
      *
@@ -91,14 +151,17 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         }
     }
     
+    
+    /**
+     * Affiche les détails sur les praticiens
+     */
     public void detailsPraticien(){
-//        CtrlPrincipal CtrlP = new CtrlPrincipal();
-//        CtrlP.action(EnumAction.PRATICIEN_AFFICHER);
-          getCtrlPrincipal().action(EnumAction.PRATICIEN_AFFICHER);
-        
-        
-        
+          getCtrlPrincipal().action(EnumAction.PRATICIEN_AFFICHER);       
     }
+    
+    
+    
+    
     
     
     // ACCESSEURS et MUTATEURS Vue Rapports de visites
