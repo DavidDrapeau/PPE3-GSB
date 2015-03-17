@@ -131,7 +131,7 @@ public class Praticien {
     
     @Override
     public String toString(){
-        return this.getNomPrat()+" "+this.getPrenomPrat() ;
+        return nomPrat + " " + prenomPrat ;
     }
     
 }

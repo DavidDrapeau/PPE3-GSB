@@ -39,12 +39,13 @@ public class DaoRapportVisite {
         pstmt.setString(1, matricule);
         rs = pstmt.executeQuery();
         if (rs.next()) {
+            int numRap = rs.getInt("RAP_NUM");
             Date date = rs.getDate("RAP_DATE");
             String bilan = rs.getString("RAP_BILAN");
             String motif = rs.getString("RAP_MOTIF");
             Praticien praticien = DaoPraticien.selectOne(rs.getInt("PRA_NUM"));
             
-            unRapportVisite = new RapportVisite(matricule, date, bilan, motif, praticien);
+            unRapportVisite = new RapportVisite(matricule, numRap, date, bilan, motif, praticien);
         }
         return unRapportVisite;
     }
@@ -67,12 +68,13 @@ public class DaoRapportVisite {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 String matricule = rs.getString("VIS_MATRICULE");
+                int numRap = rs.getInt("RAP_NUM");
                 Date date = rs.getDate("RAP_DATE");
                 String bilan = rs.getString("RAP_BILAN");
                 String motif = rs.getString("RAP_MOTIF");
                 Praticien praticien = DaoPraticien.selectOne(rs.getInt("PRA_NUM"));
 
-                unRapportVisite = new RapportVisite(matricule, date, bilan, motif, praticien);
+                unRapportVisite = new RapportVisite(matricule, numRap, date, bilan, motif, praticien);
                 lesRapportVisites.add(unRapportVisite);
             }
             pstmt.close();
