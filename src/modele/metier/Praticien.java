@@ -11,7 +11,7 @@ package modele.metier;
  * @author btssio
  */
 public class Praticien {
-    private String numPrat;
+    private int numPrat;
     private String nomPrat;
     private String prenomPrat;
     private String adressePrat;
@@ -23,7 +23,7 @@ public class Praticien {
     private TypePraticien typePraticien;
     
   
-    public Praticien(String numPrat, String nomPrat, String prenomPrat, String adressePrat, String cpPrat, String villePrat, String coefNotoriete, TypePraticien typePraticien) {
+    public Praticien(int numPrat, String nomPrat, String prenomPrat, String adressePrat, String cpPrat, String villePrat, String coefNotoriete, TypePraticien typePraticien) {
         this.numPrat = numPrat;
         this.nomPrat = nomPrat;
         this.prenomPrat = prenomPrat;
@@ -35,7 +35,7 @@ public class Praticien {
     }
 
  //Constructeur Praticien
-    public Praticien(String numPrat, String nomPrat, String prenomPrat, String adressePrat, String cpPrat, String villePrat, String coefNotoriete, String codeTypePraticien) {
+    public Praticien(int numPrat, String nomPrat, String prenomPrat, String adressePrat, String cpPrat, String villePrat, String coefNotoriete, String codeTypePraticien) {
         this.numPrat = numPrat;
         this.nomPrat = nomPrat;
         this.prenomPrat = prenomPrat;
@@ -48,11 +48,11 @@ public class Praticien {
     
   
     //Getters et setters   
-    public String getNumPrat() {
+    public int getNumPrat() {
         return numPrat;
     }
 
-    public void setNumPrat(String numPrat) {
+    public void setNumPrat(int numPrat) {
         this.numPrat = numPrat;
     }
 

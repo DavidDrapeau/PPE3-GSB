@@ -28,7 +28,7 @@ public class TestDaoPraticien {
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_SelectUnique("12");
+            test1_SelectUnique(12);
             System.out.println("Test1 effectué : sélection unique\n");
             test2_SelectMultiple();
             System.out.println("Test2 effectué : sélection multiple\n");
@@ -65,7 +65,7 @@ public class TestDaoPraticien {
      * @param numPrat : identifiant du praticien
      * @throws SQLException 
      */
-    public static void test1_SelectUnique(String numPrat) throws SQLException {
+    public static void test1_SelectUnique(int numPrat) throws SQLException {
         Praticien cePraticien = DaoPraticien.selectOne(numPrat);
         if ( cePraticien != null) {
             System.out.println("Praticien d'identifiant : " + numPrat + " : " + cePraticien.toString02());

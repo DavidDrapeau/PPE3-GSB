@@ -6,6 +6,8 @@
 
 package modele.metier;
 
+import java.util.Date;
+
 
 /**
  *
@@ -13,15 +15,15 @@ package modele.metier;
  */
 public class RapportVisite {
     private String matricule;
-    private String numRap;
+    private int numRap;
     private String numPra;
-    private String date;
+    private Date date;
     private String bilan;
     private String motif;
     
     private Praticien praticien;
 
-    public RapportVisite(String matricule, String numRap, String date, String bilan, String motif, Praticien praticien) {
+    public RapportVisite(String matricule, int numRap, Date date, String bilan, String motif, Praticien praticien) {
         this.matricule = matricule;
         this.numRap = numRap;
         this.date = date;
@@ -30,7 +32,7 @@ public class RapportVisite {
         this.praticien = praticien;
     }
 
-    public RapportVisite(String matricule, String numRap, String numPra, String date, String bilan, String motif) {
+    public RapportVisite(String matricule, int numRap, String numPra, Date date, String bilan, String motif) {
         this.matricule = matricule;
         this.numRap = numRap;
         this.numPra = numPra;
@@ -47,11 +49,11 @@ public class RapportVisite {
         this.matricule = matricule;
     }
 
-    public String getNumRap() {
+    public int getNumRap() {
         return numRap;
     }
 
-    public void setNumRap(String numRap) {
+    public void setNumRap(int numRap) {
         this.numRap = numRap;
     }
 
@@ -63,11 +65,11 @@ public class RapportVisite {
         this.numPra = numPra;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -98,12 +100,8 @@ public class RapportVisite {
     }
 
     
-    public String toString2() {
+    public String toString() {
         return "RapportVisite{" + "matricule=" + matricule + ", numRap=" + numRap + ", date=" + date + ", bilan=" + bilan + ", motif=" + motif + ", praticien=" + praticien + '}';
     }
-    
-    public String toString(){
-        return matricule;
-    }
-    
+   
 }

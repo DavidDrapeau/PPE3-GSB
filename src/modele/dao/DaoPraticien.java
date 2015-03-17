@@ -20,7 +20,7 @@ import modele.metier.TypePraticien;
  */
 public class DaoPraticien {
     //Récupérer un praticien d'après son id
-     public static Praticien selectOne(String numPrat) throws SQLException {
+     public static Praticien selectOne(int numPrat) throws SQLException {
         Praticien unPraticien = null;
         ResultSet rs;
         PreparedStatement pstmt;
@@ -28,7 +28,7 @@ public class DaoPraticien {
         // préparer la requête
         String requete = "SELECT * FROM PRATICIEN WHERE PRA_NUM= ?";
         pstmt = jdbc.getConnexion().prepareStatement(requete);
-        pstmt.setString(1, numPrat);
+        pstmt.setInt(1, numPrat);
         rs = pstmt.executeQuery();
         if (rs.next()) {
             String nomPrat = rs.getString("PRA_NOM");
@@ -37,7 +37,7 @@ public class DaoPraticien {
             String cpPrat = rs.getString("PRA_CP");
             String villePrat = rs.getString("PRA_VILLE");
             String coefNotoriete = rs.getString("PRA_COEFNOTORIETE");
-            String typePraticien = rs.getString("TYP_CODE");
+            TypePraticien typePraticien = DaoTypePraticien.selectOne(rs.getString("TYP_CODE"));
             
             unPraticien = new Praticien(numPrat, nomPrat, prenomPrat, adressePrat, cpPrat, villePrat, coefNotoriete, typePraticien);
         }
@@ -61,7 +61,7 @@ public class DaoPraticien {
             pstmt = jdbc.getConnexion().prepareStatement(requete);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                String numPrat = rs.getString("PRA_NUM");
+                int numPrat = rs.getInt("PRA_NUM");
                 String nomPrat = rs.getString("PRA_NOM");
                 String prenomPrat = rs.getString("PRA_PRENOM");
                 String adressePrat = rs.getString("PRA_ADRESSE");

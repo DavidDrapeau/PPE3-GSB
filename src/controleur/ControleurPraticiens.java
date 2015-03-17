@@ -131,7 +131,7 @@ public class ControleurPraticiens extends CtrlAbstrait{
         Praticien praticienSelect = (Praticien) getVue().jComboBoxSearch.getSelectedItem();
         System.out.println(praticienSelect.toString02());
         
-        getVue().jTextFieldNum.setText(praticienSelect.getNumPrat());
+        getVue().jTextFieldNum.setText(Integer.toString(praticienSelect.getNumPrat()));
         getVue().jTextFieldNom.setText(praticienSelect.getNomPrat());
         getVue().jTextFieldPrenom.setText(praticienSelect.getPrenomPrat());
         getVue().jTextFieldAdresse.setText(praticienSelect.getAdressePrat());

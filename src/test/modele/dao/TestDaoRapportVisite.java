@@ -68,7 +68,7 @@ public class TestDaoRapportVisite {
     public static void test1_SelectUnique(String matricule) throws SQLException {
         RapportVisite ceRapportVisite = DaoRapportVisite.selectOne(matricule);
         if ( ceRapportVisite != null) {
-            System.out.println("Rapport de visite de matricule : " + matricule + " : " + ceRapportVisite.toString2());
+            System.out.println("Rapport de visite de matricule : " + matricule + " : " + ceRapportVisite.toString());
         } else {
             System.out.println("Le rapport de visite de matricule : " +  matricule + " n'existe pas ");
         }
@@ -85,7 +85,7 @@ public class TestDaoRapportVisite {
             desRapportVisites = DaoRapportVisite.selectAll();
             System.out.println("Les rapports de visites lus : " + desRapportVisites.toString());
         } catch (DaoException ex) {
-            Logger.getLogger(TestDaoPraticien.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestDaoRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

@@ -8,6 +8,9 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +30,8 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
     private List<Praticien> lesPraticiens;
     //indice pour charger les informations d'un rapport de visite
     private int indice = 0 ;
+    //Format de date de type MM/dd/yy
+    DateFormat format = new SimpleDateFormat("MM/dd/yy");
     
     VueRapportsDeVisites vue = new VueRapportsDeVisites(this);
    
@@ -86,6 +91,13 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
                 rapportSuivant();
             }           
         });
+        
+        //Ecouteur sur bouton nouveau
+        vue.jButtonNew.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                nouveauRapport();
+            }           
+        });
     }
     
     
@@ -117,13 +129,22 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
      * @param lesRapportsVisites 
      */
     public void afficherDetailsRapport(List<RapportVisite> lesRapportsVisites){
-        RapportVisite unRapport = lesRapportsVisites.get(indice) ;
-        getVue().jTextFieldNum.setText(unRapport.getNumRap());
-        getVue().jTextFieldDate.setText(unRapport.getDate());
+        //Rend les éléments non éditables
+        Date date = new Date();
+        getVue().jTextFieldNum.setEditable(false);
+        getVue().jComboBoxPraticien.setEditable(false);
+        getVue().jTextFieldDate.setText(format.format(date));
+        getVue().jTextFieldDate.setEditable(false);
+        getVue().jTextFieldMotif.setEditable(false);
+        getVue().jTextAreaBilan.setEditable(false);
+        
+        //Affichage des informations sur les rapports de visites
+        RapportVisite unRapport = lesRapportsVisites.get(indice);
+        getVue().jTextFieldNum.setText(Integer.toString(unRapport.getNumRap()));
+        getVue().jTextFieldDate.setText(format.format(unRapport.getDate()));
         getVue().jTextFieldMotif.setText(unRapport.getMotif());
         getVue().jTextAreaBilan.setText(unRapport.getBilan());
         Praticien unPraticien = unRapport.getPraticien();
-        System.out.println(unPraticien);
         getVue().jComboBoxPraticien.setSelectedItem(unPraticien.toString());
     }
     
@@ -149,7 +170,19 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         afficherDetailsRapport(lesRapportsVisites);
     }
     
-
+    public void nouveauRapport(){
+        Date date = new Date();
+        getVue().jTextFieldNum.setText(" ");
+        getVue().jTextFieldNum.setEditable(false);
+        getVue().jComboBoxPraticien.setEditable(true);
+        getVue().jComboBoxPraticien.setSelectedItem("Aucun");
+        getVue().jTextFieldDate.setText(format.format(date));
+        getVue().jTextFieldDate.setEditable(true);
+        getVue().jTextFieldMotif.setText(" ") ;
+        getVue().jTextFieldMotif.setEditable(true);
+        getVue().jTextAreaBilan.setText(" ") ;
+        getVue().jTextAreaBilan.setEditable(true);
+    }
  
     
     
