@@ -28,7 +28,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelNum" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="493" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButtonFermer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
@@ -50,17 +50,15 @@
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="jButtonSuivant" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                                       <Component id="jButtonNew" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jButtonEnregistrer" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -68,7 +66,11 @@
                                   <Component id="jTextFieldMotif" min="-2" pref="141" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="275" max="-2" attributes="0"/>
                                   <Component id="jTextFieldDate" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxPraticien" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jComboBoxPraticien" min="-2" pref="138" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Component id="jTextFieldNum" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -137,6 +139,7 @@
                           <Component id="jButtonSuivant" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonPrecedent" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonFermer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonEnregistrer" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
@@ -305,6 +308,14 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonEnregistrer">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enregistrer"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

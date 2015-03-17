@@ -137,6 +137,8 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         getVue().jTextFieldDate.setEditable(false);
         getVue().jTextFieldMotif.setEditable(false);
         getVue().jTextAreaBilan.setEditable(false);
+        getVue().jButtonNew.setVisible(true);
+        getVue().jButtonEnregistrer.setVisible(false);
         
         //Affichage des informations sur les rapports de visites
         RapportVisite unRapport = lesRapportsVisites.get(indice);
@@ -182,6 +184,9 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         getVue().jTextFieldMotif.setEditable(true);
         getVue().jTextAreaBilan.setText(" ") ;
         getVue().jTextAreaBilan.setEditable(true);
+        
+        getVue().jButtonNew.setVisible(false);
+        getVue().jButtonEnregistrer.setVisible(true);
     }
  
     

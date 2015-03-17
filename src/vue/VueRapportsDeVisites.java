@@ -52,6 +52,7 @@ public class VueRapportsDeVisites extends VueAbstraite {
         jButtonPrecedent = new javax.swing.JButton();
         jButtonSuivant = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jButtonEnregistrer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +97,8 @@ public class VueRapportsDeVisites extends VueAbstraite {
 
         jButtonSuivant.setText("Suivant");
 
+        jButtonEnregistrer.setText("Enregistrer");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,7 +108,7 @@ public class VueRapportsDeVisites extends VueAbstraite {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 493, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonFermer)
                         .addGap(48, 48, 48))
                     .addGroup(layout.createSequentialGroup()
@@ -126,18 +129,20 @@ public class VueRapportsDeVisites extends VueAbstraite {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonSuivant)
                                         .addGap(114, 114, 114)
-                                        .addComponent(jButtonNew))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(180, 180, 180)
-                                        .addComponent(jButtonDetails)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jButtonNew)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonEnregistrer)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldMotif, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldDate, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBoxPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jComboBoxPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonDetails))
                                     .addComponent(jTextFieldNum, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(35, 35, 35)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +193,8 @@ public class VueRapportsDeVisites extends VueAbstraite {
                             .addComponent(jButtonNew)
                             .addComponent(jButtonSuivant)
                             .addComponent(jButtonPrecedent)
-                            .addComponent(jButtonFermer))
+                            .addComponent(jButtonFermer)
+                            .addComponent(jButtonEnregistrer))
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,6 +207,7 @@ public class VueRapportsDeVisites extends VueAbstraite {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonDetails;
+    public javax.swing.JButton jButtonEnregistrer;
     public javax.swing.JButton jButtonFermer;
     public javax.swing.JButton jButtonNew;
     public javax.swing.JButton jButtonPrecedent;
