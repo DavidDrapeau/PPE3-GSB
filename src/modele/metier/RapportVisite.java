@@ -23,7 +23,7 @@ public class RapportVisite {
     
     private Praticien praticien;
 
-    public RapportVisite(String matricule, int numRap, Date date, String bilan, String motif, Praticien praticien) {
+    public RapportVisite(String matricule, Date date, String bilan, String motif, Praticien praticien) {
         this.matricule = matricule;
         this.numRap = numRap;
         this.date = date;
@@ -101,7 +101,7 @@ public class RapportVisite {
 
     
     public String toString() {
-        return "RapportVisite{" + "matricule=" + matricule + ", numRap=" + numRap + ", date=" + date + ", bilan=" + bilan + ", motif=" + motif + ", praticien=" + praticien + '}';
+        return "RapportVisite{" + "matricule=" + matricule + ", date=" + date + ", bilan=" + bilan + ", motif=" + motif + ", praticien=" + praticien + '}';
     }
    
 }

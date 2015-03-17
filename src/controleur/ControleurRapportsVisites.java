@@ -6,14 +6,19 @@
 
 package controleur;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import modele.dao.DaoException;
 import modele.dao.DaoPraticien;
 import modele.dao.DaoRapportVisite;
@@ -98,6 +103,17 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
                 nouveauRapport();
             }           
         });
+        
+        //Ecouteur sur bouton enregistre
+        vue.jButtonEnregistrer.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    enregistrerRapport();
+                } catch (Exception ex) {
+                    Logger.getLogger(ControleurRapportsVisites.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }           
+        });
     }
     
     
@@ -122,6 +138,13 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         for (Praticien praticien : lesPraticiens) {  
             getVue().jComboBoxPraticien.addItem(praticien.toString());
         }
+    }
+    
+    /**
+     * Affiche les détails sur les praticiens
+     */
+    public void detailsPraticien(){
+          getCtrlPrincipal().action(EnumAction.PRATICIEN_AFFICHER);       
     }
     
     /**
@@ -172,6 +195,9 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         afficherDetailsRapport(lesRapportsVisites);
     }
     
+    /**
+     * Permet de saisir un nouveau rapport
+     */
     public void nouveauRapport(){
         Date date = new Date();
         getVue().jTextFieldNum.setText(" ");
@@ -189,15 +215,40 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         getVue().jButtonEnregistrer.setVisible(true);
     }
  
-    
-    
     /**
-     * Affiche les détails sur les praticiens
+     * Insertion d'un rapport de visite 
+     * @throws ParseException
+     * @throws SQLException 
      */
-    public void detailsPraticien(){
-          getCtrlPrincipal().action(EnumAction.PRATICIEN_AFFICHER);       
+    public void enregistrerRapport() throws ParseException, SQLException{
+        Praticien unPraticien = (Praticien) getVue().jComboBoxPraticien.getSelectedItem();
+       
+        Date date = null;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String dateString = vue.jTextFieldDate.getText();
+
+        try { 
+            date = formatter.parse(dateString);
+            System.out.println(date);
+            System.out.println(formatter.format(date));
+            String motif = getVue().jTextFieldMotif.getText() ;
+            String bilan = getVue().jTextAreaBilan.getText() ;
+            RapportVisite unRapportVisite = new RapportVisite("zzz", date, bilan, motif, unPraticien);
+
+            //Envoie du rapport de visite à la classe dao pour l'insérer dans la base de données
+            DaoRapportVisite.insert(unRapportVisite) ;
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
+        
+        } catch (ParseException e) {
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame, "Le format de la date n'est pas valide(jj/mm/aaaa)");
+        }
+        
+        afficherDetailsRapport(lesRapportsVisites);
     }
     
+   
     
     
     

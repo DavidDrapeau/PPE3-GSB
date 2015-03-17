@@ -39,13 +39,12 @@ public class DaoRapportVisite {
         pstmt.setString(1, matricule);
         rs = pstmt.executeQuery();
         if (rs.next()) {
-            int numRap = rs.getInt("RAP_NUM");
-            String numPra = rs.getString("PRA_NUM");
             Date date = rs.getDate("RAP_DATE");
             String bilan = rs.getString("RAP_BILAN");
             String motif = rs.getString("RAP_MOTIF");
+            Praticien praticien = DaoPraticien.selectOne(rs.getInt("PRA_NUM"));
             
-            unRapportVisite = new RapportVisite(matricule, numRap, numPra, date, bilan, motif);
+            unRapportVisite = new RapportVisite(matricule, date, bilan, motif, praticien);
         }
         return unRapportVisite;
     }
@@ -68,13 +67,12 @@ public class DaoRapportVisite {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 String matricule = rs.getString("VIS_MATRICULE");
-                int numRap = rs.getInt("RAP_NUM");
                 Date date = rs.getDate("RAP_DATE");
                 String bilan = rs.getString("RAP_BILAN");
                 String motif = rs.getString("RAP_MOTIF");
                 Praticien praticien = DaoPraticien.selectOne(rs.getInt("PRA_NUM"));
 
-                unRapportVisite = new RapportVisite(matricule, numRap, date, bilan, motif, praticien);
+                unRapportVisite = new RapportVisite(matricule, date, bilan, motif, praticien);
                 lesRapportVisites.add(unRapportVisite);
             }
             pstmt.close();
@@ -114,14 +112,14 @@ public class DaoRapportVisite {
         String requete =" INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES (?,?,?,?,?)" ;
         
         PreparedStatement preparedStatement = Jdbc.getInstance().getConnexion().prepareStatement(requete);
-//        preparedStatement.setString(1, numVisiteur);
-//        preparedStatement.setInt(2,numPraticien);
+        preparedStatement.setString(1, unRapportVisite.getMatricule());
+        preparedStatement.setInt(2, unRapportVisite.getPraticien().getNumPrat());
         preparedStatement.setDate(3, sqlDate);
         preparedStatement.setString(4, unRapportVisite.getBilan());
         preparedStatement.setString(5, unRapportVisite.getMotif());
         
         
-        // execute insert SQL stetement
+        // execute insert SQL statement
         preparedStatement.executeUpdate();
         return 1 ;
     }

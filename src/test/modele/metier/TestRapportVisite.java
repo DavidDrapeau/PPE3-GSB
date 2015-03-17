@@ -24,7 +24,7 @@ public class TestRapportVisite {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local ");
         Praticien unPra = new Praticien(150, "noulet", "sylvain", "adresse", "cp", "ville", "45.2", unTypePra);
-        rapVi = new RapportVisite("a770", 12, sdf.parse("20/11/2012"), "Très bon médecin", "Rappot annuel", unPra);
+        rapVi = new RapportVisite("a770", sdf.parse("20/11/2012"), "Très bon médecin", "Rappot annuel", unPra);
         System.out.println("Etat du rapport de visite: " + rapVi.toString());
         
         // Test n°2 : mutateurs
@@ -32,7 +32,6 @@ public class TestRapportVisite {
         TypePraticien unTypePra02 = new TypePraticien("CY", "test yolo", "local ");
         Praticien unPra02 = new Praticien(153, "noulet", "sylvain", "adresse", "cp", "ville", "56.2", unTypePra02);
         rapVi.setMatricule("a771");
-        rapVi.setNumRap(12);
         rapVi.setPraticien(unPra02);
         rapVi.setDate(sdf.parse("24/05/2006"));
         rapVi.setBilan("Très bon médecin");
