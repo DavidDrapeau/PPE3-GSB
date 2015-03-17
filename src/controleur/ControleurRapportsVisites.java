@@ -222,7 +222,6 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
      */
     public void enregistrerRapport() throws ParseException, SQLException{
         Praticien unPraticien = (Praticien) getVue().jComboBoxPraticien.getSelectedItem();
-       
         Date date = null;
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = vue.jTextFieldDate.getText();
