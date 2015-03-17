@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 import modele.metier.Praticien;
 import modele.metier.RapportVisite;
-import modele.metier.Visiteur;
 
 /**
  *
@@ -85,28 +84,13 @@ public class DaoRapportVisite {
         return lesRapportVisites;
     }
     
-    
-     /**
-     * conversion de java.util.Date vers java.sql.Date
-     *
-     * @param uneDate java.util.Date
-     * @return java.sql.Date
-     */
-    public static java.sql.Date toSqlDate(java.util.Date uneDate) {
-        return new java.sql.Date(uneDate.getTime());
-    }
-
+     
     /**
-     * conversion de java.sql.Date vers java.util.Date
-     *
-     * @param uneDate java.sql.Date
-     * @return java.util.Date
+     * Insertion d'un rapport de visite
+     * @param unRapportVisite
+     * @return
+     * @throws SQLException 
      */
-    public static java.util.Date toUtilDate(java.sql.Date uneDate) {
-        return new java.util.Date(uneDate.getTime());
-    }
-    
-    
     public static int insert(RapportVisite unRapportVisite) throws SQLException {
         DateFormat format = new SimpleDateFormat("MM/dd/yy");
         java.sql.Date sqlDate = new java.sql.Date(unRapportVisite.getDate().getTime());

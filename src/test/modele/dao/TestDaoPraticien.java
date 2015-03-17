@@ -32,6 +32,8 @@ public class TestDaoPraticien {
             System.out.println("Test1 effectué : sélection unique\n");
             test2_SelectMultiple();
             System.out.println("Test2 effectué : sélection multiple\n");
+            test3_SelectUniqueNom("Notini", "Alain");
+            System.out.println("Test1 effectué : sélection unique\n");
         } catch (ClassNotFoundException e) {
             System.err.println("Erreur de pilote JDBC : " + e);
         } catch (SQLException e) {
@@ -86,6 +88,22 @@ public class TestDaoPraticien {
             System.out.println("Les praticiens lus : " + desPraticiens.toString());
         } catch (DaoException ex) {
             Logger.getLogger(TestDaoPraticien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    /**
+     * Test de selection unique qui récupère un praticien en fonction de son nom et de son prénom
+     * @param nomPrat
+     * @param prenomPrat
+     * @throws SQLException 
+     */
+     public static void test3_SelectUniqueNom(String nomPrat, String prenomPrat) throws SQLException {
+        Praticien cePraticien = DaoPraticien.selectOneByName(nomPrat, prenomPrat);
+        if ( cePraticien != null) {
+            System.out.println("Praticien du nom de : " + nomPrat + " "+ prenomPrat + " : " + cePraticien.toString02());
+        } else {
+            System.out.println("Le praticien du nom de : " +  nomPrat + " "+ prenomPrat + " n'existe pas ");
         }
         
     }

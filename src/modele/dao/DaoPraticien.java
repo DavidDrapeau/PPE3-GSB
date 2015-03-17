@@ -19,7 +19,12 @@ import modele.metier.TypePraticien;
  * @author btssio
  */
 public class DaoPraticien {
-    //Récupérer un praticien d'après son id
+    /**
+     * Récupère un praticien d'après son id
+     * @param numPrat
+     * @return
+     * @throws SQLException 
+     */
      public static Praticien selectOne(int numPrat) throws SQLException {
         Praticien unPraticien = null;
         ResultSet rs;
@@ -48,7 +53,46 @@ public class DaoPraticien {
         return unPraticien;
     }
      
-    //Récupérer tous les secteurs
+     /**
+      * Récupère un praticien d'après son nom et son prénom
+      * @param nom
+      * @param prenom
+      * @return
+      * @throws SQLException 
+      */
+     public static Praticien selectOneByName(String nom, String prenom) throws SQLException {
+        Praticien unPraticien = null;
+        ResultSet rs;
+        PreparedStatement pstmt;
+        Jdbc jdbc = Jdbc.getInstance();
+        // préparer la requête
+        String requete = "SELECT * FROM PRATICIEN WHERE PRA_NOM=? AND PRA_PRENOM= ?";
+        pstmt = jdbc.getConnexion().prepareStatement(requete);
+        pstmt.setString(1, nom);
+        pstmt.setString(2, prenom);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+            int numPrat = rs.getInt("PRA_NUM");
+            String adressePrat = rs.getString("PRA_ADRESSE");
+            String cpPrat = rs.getString("PRA_CP");
+            String villePrat = rs.getString("PRA_VILLE");
+            String coefNotoriete = rs.getString("PRA_COEFNOTORIETE");
+            TypePraticien typePraticien = DaoTypePraticien.selectOne(rs.getString("TYP_CODE"));
+            
+            unPraticien = new Praticien(numPrat, nom, prenom, adressePrat, cpPrat, villePrat, coefNotoriete, typePraticien);
+        }
+        pstmt.close();
+        pstmt = null;
+        rs.close();
+        rs = null;
+        return unPraticien;
+    }
+     
+    /**
+     * Récupère tous les praticiens
+     * @return
+     * @throws DaoException 
+     */
     public static List<Praticien> selectAll() throws DaoException {
         List<Praticien> lesPraticiens = new ArrayList<Praticien>();
         Praticien unPraticien;
