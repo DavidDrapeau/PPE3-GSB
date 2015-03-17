@@ -227,35 +227,40 @@ public class ControleurRapportsVisites extends CtrlAbstrait{
         Date date = null;
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = vue.jTextFieldDate.getText();
-    
-        try { 
-            //On split le praticien(nom et prénom) afin de pouvoir récupérer son identifiant par une requête SQL 
-            String split[] ;
-            split = unPraticien.split(" ") ;
-            String newNom = split[0] ;
-            String newPrenom = split[1] ;
-            Praticien lePraticienBis = DaoPraticien.selectOneByName(newNom, newPrenom) ;
-            
-            //Conversion de la date dans le format adéquat
-            date = formatter.parse(dateString);
-            
-            //Récupération du motif et du bilan
-            String motif = getVue().jTextFieldMotif.getText() ;
-            String bilan = getVue().jTextAreaBilan.getText() ;
-            
-            //Création de l'objet rapport de visite
-            RapportVisite unRapportVisite = new RapportVisite("zzz", date, bilan, motif, lePraticienBis);
+        
+        //Récupération du motif et du bilan
+        String motif = getVue().jTextFieldMotif.getText() ;
+        String bilan = getVue().jTextAreaBilan.getText() ;
+        
+        if(unPraticien == "Aucun" || motif.equals(null) || bilan.equals(null) || dateString.equals(null)){
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame, "Erreur! Veuillez renseigner tous les champs.");
+        } else {
+            try { 
+                //On split le praticien(nom et prénom) afin de pouvoir récupérer son identifiant par une requête SQL 
+                String split[] ;
+                split = unPraticien.split(" ") ;
+                String newNom = split[0] ;
+                String newPrenom = split[1] ;
+                Praticien lePraticienBis = DaoPraticien.selectOneByName(newNom, newPrenom) ;
 
-            //Envoie du rapport de visite à la classe dao pour l'insérer dans la base de données
-            DaoRapportVisite.insert(unRapportVisite) ;
-            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-            JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
-            
-            //Appel de la fonction pour afficher les rapports de visites
-            afficherDetailsRapport(lesRapportsVisites);
-        } catch (ParseException e) {
-            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-            JOptionPane.showMessageDialog(frame, "Le format de la date n'est pas valide(jj/mm/aaaa)");
+                //Conversion de la date dans le format adéquat
+                date = formatter.parse(dateString);
+
+                //Création de l'objet rapport de visite
+                RapportVisite unRapportVisite = new RapportVisite("zzz", date, bilan, motif, lePraticienBis);
+
+                //Envoie du rapport de visite à la classe dao pour l'insérer dans la base de données
+                DaoRapportVisite.insert(unRapportVisite) ;
+                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+                JOptionPane.showMessageDialog(frame, "Rapport sauvegardé");
+
+                //Appel de la fonction pour afficher les rapports de visites
+                afficherDetailsRapport(lesRapportsVisites);
+            } catch (ParseException e) {
+                JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+                JOptionPane.showMessageDialog(frame, "Le format de la date n'est pas valide(jj/mm/aaaa)");
+            }
         }
     }
     
