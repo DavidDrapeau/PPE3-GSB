@@ -107,7 +107,7 @@ public class CtrlPrincipal {
         } else {
             // si la le contrôleur et sa vue existent déjà
             // il faut rafraîchir le contenu à partir de la base de données
-           // ControleurVisiteurs.afficherVisteur();
+            //ControleurVisiteurs.visiteurSelectionne();
         }
         // vuPresence est une fenêtre modale :
         // -> vueMenu reste visible, mais n'est pas active
