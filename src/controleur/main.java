@@ -23,7 +23,8 @@ public class main {
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
         //String ficPropertiesJdbc = "gsbProperties_local.properties"; // nom du fichier de properties SERVEUR LOCAL
-        String ficPropertiesJdbc ="gsbProperties.properties" ; //nom du fichier de properties SERVEUR DISTANT
+        //String ficPropertiesJdbc ="gsbProperties.properties" ; //nom du fichier de properties SERVEUR DISTANT
+        String ficPropertiesJdbc ="gsbProperties_perso.properties" ; //nom du fichier de properties SERVEUR DISTANT
         Properties propertiesJdbc; // objet de propriétés (paramètres de l'appplication) pour Jdbc
         FileInputStream input; // flux de lecture des properties
         CtrlPrincipal ctrlPrincipal; // référence vers le contrôleur principal
