@@ -113,7 +113,7 @@ public class Praticien {
     }
 
     
-    
+    //Accesseur et Setter Objet TypePraticien
     public TypePraticien getTypePraticien() {
         return typePraticien;
     }

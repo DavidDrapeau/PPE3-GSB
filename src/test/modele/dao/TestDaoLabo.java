@@ -57,7 +57,7 @@ public class TestDaoLabo {
      */
     public static void test0_Connexion() throws ClassNotFoundException, SQLException {
         //Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
-        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ora_2slamppe_eq4", "equipe04");
+        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:ORCL", "", "ddrapeau", "DDRAPEAU");
         Jdbc.getInstance().connecter();
         Connection cnx = Jdbc.getInstance().getConnexion();
     }
@@ -71,7 +71,7 @@ public class TestDaoLabo {
     public static void test1_SelectUnique(String codeLabo) throws SQLException {
         Labo ceLabo = DaoLabo.selectOne(codeLabo);
         if ( ceLabo != null) {
-            System.out.println("Labo d'identifiant : " + codeLabo + " : " + ceLabo.toString());
+            System.out.println("Labo d'identifiant : " + codeLabo + " = " + ceLabo.toString());
         } else {
             System.out.println("Le labo d'identifiant : " + codeLabo + " n'existe pas ");
         }
