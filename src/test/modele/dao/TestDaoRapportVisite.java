@@ -30,8 +30,10 @@ public class TestDaoRapportVisite {
             System.out.println("Test0 effectué : connexion\n");
             test1_SelectUnique("a131");
             System.out.println("Test1 effectué : sélection unique\n");
-            test2_SelectMultiple();
-            System.out.println("Test2 effectué : sélection multiple\n");
+            test2_SelectUniqueByNum(7);
+            System.out.println("Test2 effectué : sélection unique par le numéro de rapport\n");
+            test3_SelectMultiple();
+            System.out.println("Test3 effectué : sélection multiple\n");
         } catch (ClassNotFoundException e) {
             System.err.println("Erreur de pilote JDBC : " + e);
         } catch (SQLException e) {
@@ -55,8 +57,8 @@ public class TestDaoRapportVisite {
      * @throws SQLException
      */
     public static void test0_Connexion() throws ClassNotFoundException, SQLException {
-        //Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
-        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:ORCL", "", "ddrapeau", "DDRAPEAU");
+        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
+        //Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:ORCL", "", "ddrapeau", "DDRAPEAU");
         Jdbc.getInstance().connecter();
         Connection cnx = Jdbc.getInstance().getConnexion();
     }
@@ -75,12 +77,27 @@ public class TestDaoRapportVisite {
         }
         
     }
+    
+    /**
+     * Test de selection unique qui récupère un rapport de visite en fonction de son numéro
+     * @param numRap : numéro du rapport de visite
+     * @throws SQLException 
+     */
+    public static void test2_SelectUniqueByNum(int numRap) throws SQLException {
+        RapportVisite ceRapportVisite = DaoRapportVisite.selectOneByNum(numRap);
+        if ( ceRapportVisite != null) {
+            System.out.println("Rapport de visite de numéro : " + numRap + " : " + ceRapportVisite.toString());
+        } else {
+            System.out.println("Le rapport de visite de numéro : " +  numRap + " n'existe pas ");
+        }
+        
+    }
 
     /**
      * Test de selection multiple qui récupère tous les rapports de visites
      * @throws SQLException 
      */
-    public static void test2_SelectMultiple() throws SQLException {
+    public static void test3_SelectMultiple() throws SQLException {
         List<RapportVisite> desRapportVisites;
         try {
             desRapportVisites = DaoRapportVisite.selectAll();

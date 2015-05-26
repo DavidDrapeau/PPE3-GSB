@@ -12,26 +12,26 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modele.dao.DaoException;
-import modele.dao.DaoFamille;
+import modele.dao.DaoOffrir;
 import modele.dao.Jdbc;
-import modele.metier.Famille;
+import modele.metier.Offrir;
 
 /**
  *
  * @author btssio
  */
-public class TestDaoFamille {
+public class TestDaoOffrir {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         java.sql.Connection cnx = null;
-
+        
         try {
             test0_Connexion();
             System.out.println("Test0 effectué : connexion\n");
-            test1_SelectUnique("HYP");
+            test1_SelectUnique("a17", 4, "AMOX45");
             System.out.println("Test1 effectué : sélection unique\n");
             test2_SelectMultiple();
             System.out.println("Test2 effectué : sélection multiple\n");
@@ -48,7 +48,7 @@ public class TestDaoFamille {
                 System.err.println("Erreur de fermeture de la connexion JDBC : " + e);
             }
         }
-
+        
     }
 
     /**
@@ -58,43 +58,42 @@ public class TestDaoFamille {
      * @throws SQLException
      */
     public static void test0_Connexion() throws ClassNotFoundException, SQLException {
-        //Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
-        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:ORCL", "", "ddrapeau", "DDRAPEAU");
+        Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:XE", "", "ppegsb", "ppegsb");
+        //Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@localhost:1521:ORCL", "", "ddrapeau", "DDRAPEAU");
         Jdbc.getInstance().connecter();
         Connection cnx = Jdbc.getInstance().getConnexion();
     }
 
     /**
-     * Affiche une famille d'après son identifiant
+     * Affiche une offre d'après son identifiant
      *
-     * @param code : identifiant d'une famille à afficher
+     * @param matriculeVisiteur, numRapport, depotLegalMedi : identifiant de l'offre à afficher
      * @throws SQLException
      */
-    public static void test1_SelectUnique(String code) throws SQLException {
-        Famille cetteFamille = DaoFamille.selectOne(code);
-        if (cetteFamille != null) {
-            System.out.println("Famille d'identifiant : " + code + " : " + cetteFamille.toString());
+    public static void test1_SelectUnique(String matriculeVisiteur, int numRapport, String depotLegalMedi) throws SQLException {
+        Offrir ceOffrir = DaoOffrir.selectOne(matriculeVisiteur, numRapport, depotLegalMedi);
+        if ( ceOffrir != null) {
+            System.out.println("Offrir d'identifiant : " + matriculeVisiteur +", " + numRapport +", "+ depotLegalMedi + " : " + ceOffrir.toString02());
         } else {
-            System.out.println("La famille d'identifiant : " + code + " n'existe pas ");
+            System.out.println("Offrir d'identifiant : " + matriculeVisiteur +", " + numRapport +", "+ depotLegalMedi + " n'existe pas ");
         }
-
+        
     }
 
     /**
-     * Affiche toutes les familles
+     * Affiche toutes les offres
      *
      * @throws SQLException
      */
-    public static void test2_SelectMultiple() throws SQLException {
-        List<Famille> desFamilles;
+    public static void test2_SelectMultiple() throws SQLException{
+        List<Offrir> desOffres;
         try {
-            desFamilles = DaoFamille.selectAll();
-            System.out.println("Les familles lues : " + desFamilles.toString());
+            desOffres = DaoOffrir.selectAll();
+            System.out.println("Les visiteurs lus : " + desOffres.toString());
         } catch (DaoException ex) {
             Logger.getLogger(TestDaoVisiteur.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
+    
 }
-

@@ -26,7 +26,12 @@ public class DaoRapportVisite {
     private String split2[] ;
     
     
-    //Récupérer un rapport de visite d'après son id
+    /**
+     * Récupérer un rapport de visite d'après son id
+     * @param matricule : identifiant du rapport de visite
+     * @return
+     * @throws SQLException 
+     */
      public static RapportVisite selectOne(String matricule) throws SQLException {
         RapportVisite unRapportVisite = null;
         ResultSet rs;
@@ -48,6 +53,34 @@ public class DaoRapportVisite {
         }
         return unRapportVisite;
     }
+     
+    /**
+     * Récupérer un rapport de vsite d'après son numéro
+     * @param numRap : numéro du rapport
+     * @return
+     * @throws SQLException 
+     */
+     public static RapportVisite selectOneByNum(int numRap) throws SQLException {
+        RapportVisite unRapportVisite = null;
+        ResultSet rs;
+        PreparedStatement pstmt;
+        Jdbc jdbc = Jdbc.getInstance();
+        // préparer la requête
+        String requete = "SELECT * FROM RAPPORT_VISITE WHERE RAP_NUM= ?";
+        pstmt = jdbc.getConnexion().prepareStatement(requete);
+        pstmt.setInt(1, numRap);
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+            String matricule = rs.getString("VIS_MATRICULE");
+            Date date = rs.getDate("RAP_DATE");
+            String bilan = rs.getString("RAP_BILAN");
+            String motif = rs.getString("RAP_MOTIF");
+            Praticien praticien = DaoPraticien.selectOne(rs.getInt("PRA_NUM"));
+            
+            unRapportVisite = new RapportVisite(matricule, numRap, date, bilan, motif, praticien);
+        }
+        return unRapportVisite;
+    } 
      
     /**
      * Récupérer tous les rapports de visites

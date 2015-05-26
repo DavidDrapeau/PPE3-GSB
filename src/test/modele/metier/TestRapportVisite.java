@@ -22,14 +22,14 @@ public class TestRapportVisite {
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local ");
+        TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local");
         Praticien unPra = new Praticien(150, "noulet", "sylvain", "adresse", "cp", "ville", "45.2", unTypePra);
         rapVi = new RapportVisite("a770", sdf.parse("20/11/2012"), "Très bon médecin", "Rappot annuel", unPra);
         System.out.println("Etat du rapport de visite: " + rapVi.toString());
         
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
-        TypePraticien unTypePra02 = new TypePraticien("CY", "test yolo", "local ");
+        TypePraticien unTypePra02 = new TypePraticien("CY", "test yolo", "local");
         Praticien unPra02 = new Praticien(153, "noulet", "sylvain", "adresse", "cp", "ville", "56.2", unTypePra02);
         rapVi.setMatricule("a771");
         rapVi.setPraticien(unPra02);
