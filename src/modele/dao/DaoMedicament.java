@@ -10,6 +10,6 @@ package modele.dao;
  *
  * @author btssio
  */
-public class DaoMedicaent {
+public class DaoMedicament {
     
 }

@@ -18,13 +18,13 @@ public class TestPraticien {
         Praticien prat=null;
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
-        TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local ");
+        TypePraticien unTypePra = new TypePraticien("CC", "test coucou", "local");
         prat = new Praticien(23,"Gaderna","Suzanne","4 rue magellan","44000", "Nantes", "124.05", unTypePra);
         System.out.println("Etat du praticien: " + prat.toString02());
         
         // Test n°2 : mutateurs
         System.out.println("\nTest n°2 : mutateurs");
-        TypePraticien unTypePra02 = new TypePraticien("CY", "test yolo", "local ");
+        TypePraticien unTypePra02 = new TypePraticien("CY", "test yolo", "local");
         prat.setNumPrat(36);
         prat.setNomPrat("Bichana");
         prat.setPrenomPrat("Suzi");

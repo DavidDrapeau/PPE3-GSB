@@ -18,6 +18,8 @@ public class Medicament {
     private String effet;
     private String contreIndic;
     private float prixEchantillon;
+    
+    private Famille uneFamille;
 
     public Medicament(String depotLegal, String nomCommercial, String codeFamille, String composition, String effet, String contreIndic, float prixEchantillon) {
         this.depotLegal = depotLegal;
@@ -28,6 +30,18 @@ public class Medicament {
         this.contreIndic = contreIndic;
         this.prixEchantillon = prixEchantillon;
     }
+
+    public Medicament(String depotLegal, String nomCommercial, String composition, String effet, String contreIndic, float prixEchantillon, Famille uneFamille) {
+        this.depotLegal = depotLegal;
+        this.nomCommercial = nomCommercial;
+        this.composition = composition;
+        this.effet = effet;
+        this.contreIndic = contreIndic;
+        this.prixEchantillon = prixEchantillon;
+        this.uneFamille = uneFamille;
+    }
+    
+    
 
     public String getDepotLegal() {
         return depotLegal;
@@ -85,11 +99,19 @@ public class Medicament {
         this.prixEchantillon = prixEchantillon;
     }
 
-    @Override
-    public String toString() {
-        return "Medicament{" + "depotLegal=" + depotLegal + ", nomCommercial=" + nomCommercial + ", codeFamille=" + codeFamille + ", composition=" + composition + ", effet=" + effet + ", contreIndic=" + contreIndic + ", prixEchantillon=" + prixEchantillon + '}';
+    
+    
+    public Famille getUneFamille() {
+        return uneFamille;
     }
-    
-    
+
+    public void setUneFamille(Famille uneFamille) {
+        this.uneFamille = uneFamille;
+    }
+        
+    @Override 
+    public String toString() {
+        return "Medicament{" + "depotLegal=" + depotLegal + ", nomCommercial=" + nomCommercial + ", famille=" + uneFamille + ", composition=" + composition + ", effet=" + effet + ", contreIndic=" + contreIndic + ", prixEchantillon=" + prixEchantillon + '}';
+    }
     
 }
