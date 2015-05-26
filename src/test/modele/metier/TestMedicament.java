@@ -23,7 +23,7 @@ public class TestMedicament {
         //Test n°1: instanciation et accesseurs
         System.out.println("\nTest n°1: instanciation et accesseurs");
         Famille uneFamille = new Famille("AO", "Antibiotique ophtalmique");
-        medi = new Medicament("AMOX45","AMOXAR","Amoxicilline","Traite des infection bactériennes spécifiques", "Peut rendre positifs les tests de dépistage du dopage.", (float) 185.6, uneFamille);
+        medi = new Medicament("AMOX45","AMOXAR", uneFamille,"Amoxicilline","Traite des infection bactériennes spécifiques", "Peut rendre positifs les tests de dépistage du dopage.", (float) 185.6);
         System.out.println("Etat du medicament: " + medi.toString());
         
         // Test n°2 : mutateurs

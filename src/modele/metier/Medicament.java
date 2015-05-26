@@ -31,14 +31,15 @@ public class Medicament {
         this.prixEchantillon = prixEchantillon;
     }
 
-    public Medicament(String depotLegal, String nomCommercial, String composition, String effet, String contreIndic, float prixEchantillon, Famille uneFamille) {
+    public Medicament(String depotLegal, String nomCommercial, Famille uneFamille, String composition, String effet, String contreIndic, float prixEchantillon) {
         this.depotLegal = depotLegal;
         this.nomCommercial = nomCommercial;
+        this.uneFamille = uneFamille;
         this.composition = composition;
         this.effet = effet;
         this.contreIndic = contreIndic;
         this.prixEchantillon = prixEchantillon;
-        this.uneFamille = uneFamille;
+        
     }
     
     

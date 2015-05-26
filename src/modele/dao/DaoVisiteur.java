@@ -129,7 +129,8 @@ public class DaoVisiteur {
                 Secteur secteur= DaoSecteur.selectOne(rs.getString("SEC_CODE"));
                 Labo labo = DaoLabo.selectOne(rs.getString("LAB_CODE"));
                 unVisiteur = new Visiteur(matricule, nom, prenom, adresse, cp, ville, dateEmbauche, secteur,labo);
-                    lesVisiteurs.add(unVisiteur);
+                //remplissage de la liste des visiteurs
+                lesVisiteurs.add(unVisiteur);
                    
             }
             pstmt.close();
